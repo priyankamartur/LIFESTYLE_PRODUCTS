@@ -1,0 +1,17 @@
+# Dependencies
+**/node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+**/target/
+**/dist/
+**/build/
+
+# Environment and IDE files
+.DS_Store
+*.local
+.idea/
+.vscode/
+*.iml
+*.log

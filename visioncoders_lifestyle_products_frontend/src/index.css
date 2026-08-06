@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  /* Luxury Minimalist Color Palette */
+  --color-bg-main: #F6F2EC;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-elevated: #F9F7F5;
+  --color-brand-primary: #1F1F1F;
+  --color-brand-accent: #C9A66B;
+  --color-text-main: #1F1F1F;
+  --color-text-muted: #666666;
+  --color-border-main: #EAEAEA;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  h1, h2, h3, .font-serif-luxury {
+    font-family: var(--font-serif);
+  }
+  
+  /* Reset table layouts and generic borders */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border-main);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F2EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5DCD0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A66B;
+}
+
+/* Minimalist Glassmorphism utility for light beige mode */
+.glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Custom styling for inputs */
+input, select, textarea {
+  background-color: #FFFFFF !important;
+  color: #1F1F1F !important;
+  border: 1px solid #EAEAEA !important;
+  transition: all 0.2s ease;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #C9A66B !important;
+  box-shadow: 0 0 0 2px rgba(201, 166, 107, 0.1) !important;
+}
+
+/* Modal overlay class */
+.modal-overlay {
+  background: rgba(31, 31, 31, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+/* Page fade-in */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* High-priority override for the Cart page */
+.cart-page,
+.cart-page * {
+    color: inherit;
+}
+
+.cart-page h1,
+.cart-page h2,
+.cart-page h3,
+.cart-page p,
+.cart-page span,
+.cart-page strong,
+.cart-page label,
+.cart-page td,
+.cart-page th,
+.cart-page input,
+.cart-page button {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    opacity: 1 !important;
+}
+
+/* Restore readability for elements on dark backgrounds or highlights */
+.cart-page .bg-gradient-to-r,
+.cart-page .bg-gradient-to-r * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.cart-page .text-emerald-400,
+.cart-page .text-emerald-600 {
+    color: #059669 !important;
+    -webkit-text-fill-color: #059669 !important;
+}
+
+.cart-page .text-rose-400,
+.cart-page .text-rose-600,
+.cart-page button:hover .lucide-trash2,
+.cart-page button:hover .lucide {
+    color: #e11d48 !important;
+    -webkit-text-fill-color: #e11d48 !important;
+}
+
