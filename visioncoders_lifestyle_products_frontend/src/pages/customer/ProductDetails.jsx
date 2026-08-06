@@ -90,7 +90,6 @@ export default function ProductDetails() {
   const imageSrc = getProductImg(product.name, product.imageUrl);
 
   return (
-  return (
     <div className="space-y-6 animate-fadeIn text-slate-100">
       {/* Back Button */}
       <button
