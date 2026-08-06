@@ -106,8 +106,8 @@ export default function Profile() {
   }
 
   return (
-    <div className="space-y-8 animate-fadeIn">
-      <h1 className="text-3xl font-extrabold text-white tracking-tight">Account Dashboard</h1>
+    <div className="space-y-8 animate-fadeIn text-slate-100">
+      <h1 className="text-3xl font-extrabold text-white tracking-tight font-serif-luxury">Account Dashboard</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Navigation Sidebar */}
@@ -116,8 +116,8 @@ export default function Profile() {
             onClick={() => setActiveTab('orders')}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm text-left transition cursor-pointer ${
               activeTab === 'orders'
-                ? 'bg-brand-primary/10 text-brand-primary border-l-3 border-brand-primary'
-                : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                ? 'bg-amber-500/20 text-amber-300 border-l-3 border-amber-400'
+                : 'text-slate-400 hover:bg-white/5 hover:text-white'
             }`}
           >
             <ShoppingBag size={16} />
@@ -128,8 +128,8 @@ export default function Profile() {
             onClick={() => setActiveTab('profile')}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm text-left transition cursor-pointer ${
               activeTab === 'profile'
-                ? 'bg-brand-primary/10 text-brand-primary border-l-3 border-brand-primary'
-                : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                ? 'bg-amber-500/20 text-amber-300 border-l-3 border-amber-400'
+                : 'text-slate-400 hover:bg-white/5 hover:text-white'
             }`}
           >
             <User size={16} />
@@ -140,8 +140,8 @@ export default function Profile() {
             onClick={() => setActiveTab('security')}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm text-left transition cursor-pointer ${
               activeTab === 'security'
-                ? 'bg-brand-primary/10 text-brand-primary border-l-3 border-brand-primary'
-                : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                ? 'bg-amber-500/20 text-amber-300 border-l-3 border-amber-400'
+                : 'text-slate-400 hover:bg-white/5 hover:text-white'
             }`}
           >
             <Lock size={16} />
@@ -150,12 +150,12 @@ export default function Profile() {
         </aside>
 
         {/* Dynamic tabs details container */}
-        <div className="lg:col-span-3 bg-bg-surface border border-white/5 p-8 rounded-3xl shadow-xl">
+        <div className="lg:col-span-3 glass border border-white/10 p-8 rounded-3xl shadow-2xl">
           
           {/* Orders History Tab */}
           {activeTab === 'orders' && (
             <div className="space-y-6">
-              <h2 className="text-lg font-bold text-white tracking-tight border-b border-white/5 pb-4">
+              <h2 className="text-lg font-bold text-white tracking-tight border-b border-white/10 pb-4 font-serif-luxury">
                 Order History
               </h2>
 
@@ -306,7 +306,7 @@ export default function Profile() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="px-6 py-3 bg-gradient-to-r from-brand-primary to-indigo-600 hover:opacity-95 text-white font-bold rounded-xl shadow-lg transition duration-200 cursor-pointer disabled:opacity-50"
+                    className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl shadow-lg shadow-amber-500/20 transition duration-200 cursor-pointer disabled:opacity-50"
                   >
                     {submitting ? 'Updating...' : 'Save Settings'}
                   </button>
@@ -387,7 +387,7 @@ export default function Profile() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="px-6 py-3 bg-gradient-to-r from-brand-primary to-indigo-600 hover:opacity-95 text-white font-bold rounded-xl shadow-lg transition duration-200 cursor-pointer disabled:opacity-50"
+                    className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl shadow-lg shadow-amber-500/20 transition duration-200 cursor-pointer disabled:opacity-50"
                   >
                     {submitting ? 'Updating...' : 'Change Password'}
                   </button>

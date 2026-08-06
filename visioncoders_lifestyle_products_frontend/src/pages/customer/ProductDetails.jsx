@@ -90,11 +90,12 @@ export default function ProductDetails() {
   const imageSrc = getProductImg(product.name, product.imageUrl);
 
   return (
-    <div className="space-y-6 animate-fadeIn">
+  return (
+    <div className="space-y-6 animate-fadeIn text-slate-100">
       {/* Back Button */}
       <button
         onClick={() => navigate('/catalog')}
-        className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-black transition cursor-pointer"
+        className="inline-flex items-center gap-1.5 text-sm text-slate-300 hover:text-amber-400 transition cursor-pointer"
       >
         <ChevronLeft size={16} />
         Back to Shop
@@ -103,7 +104,7 @@ export default function ProductDetails() {
       {/* Main Details Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Left Column: Image Card */}
-        <div className="glass rounded-3xl overflow-hidden aspect-square relative border border-gray-200 shadow-xl bg-[#F9F7F5]">
+        <div className="glass rounded-3xl overflow-hidden aspect-square relative border border-white/10 shadow-2xl bg-slate-900/60">
           <img
             src={imageSrc}
             alt={product.name}
@@ -114,15 +115,15 @@ export default function ProductDetails() {
         {/* Right Column: Info Details */}
         <div className="space-y-6">
           <div className="space-y-2">
-            <span className="text-xs font-bold text-brand-primary uppercase tracking-widest">
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
               {product.categoryName || 'Lifestyle'}
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-black tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-serif-luxury font-extrabold text-white tracking-tight leading-tight">
               {product.name}
             </h1>
             
             {/* Rating */}
-            <div className="flex items-center gap-1.5 pt-1 text-amber-500 text-sm">
+            <div className="flex items-center gap-1.5 pt-1 text-amber-400 text-sm">
               <div className="flex">
                 <Star size={14} fill="currentColor" />
                 <Star size={14} fill="currentColor" />
@@ -130,21 +131,21 @@ export default function ProductDetails() {
                 <Star size={14} fill="currentColor" />
                 <Star size={14} fill="currentColor" className="opacity-40" />
               </div>
-              <span className="text-gray-600 text-xs">(4.5 Rating / 12 Reviews)</span>
+              <span className="text-slate-400 text-xs">(4.5 Rating / 12 Reviews)</span>
             </div>
           </div>
 
           <div className="flex items-baseline gap-3">
-            <span className="text-3xl font-black text-black">${product.price.toFixed(2)}</span>
-            <span className="text-xs text-emerald-600 font-bold px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
+            <span className="text-3xl font-black text-amber-400 font-serif-luxury">${product.price.toFixed(2)}</span>
+            <span className="text-xs text-emerald-400 font-bold px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
               In Stock & Ready to Ship
             </span>
           </div>
 
           {/* Description */}
-          <div className="border-t border-b border-gray-200 py-6 space-y-3">
-            <h3 className="text-xs font-bold text-black uppercase tracking-wider">Product Overview</h3>
-            <p className="text-black text-sm leading-relaxed">
+          <div className="border-t border-b border-white/10 py-6 space-y-3">
+            <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider">Product Overview</h3>
+            <p className="text-slate-300 text-sm leading-relaxed">
               {product.description ||
                 'Crafted using structural grade polymers and premium aesthetics, this collection incorporates durable everyday use metrics with standard design values.'}
             </p>
@@ -152,19 +153,19 @@ export default function ProductDetails() {
 
           {/* Quantity selector */}
           <div className="flex items-center gap-4">
-            <span className="text-xs font-bold text-black uppercase tracking-wider">Quantity:</span>
-            <div className="flex items-center bg-bg-surface border border-gray-200 rounded-xl p-1">
+            <span className="text-xs font-bold text-slate-200 uppercase tracking-wider">Quantity:</span>
+            <div className="flex items-center bg-slate-900/90 border border-white/15 rounded-xl p-1">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 text-gray-600 hover:text-black transition cursor-pointer"
+                className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white transition cursor-pointer"
                 title="Decrease"
               >
                 <Minus size={14} />
               </button>
-              <span className="w-10 text-center text-black text-lg font-medium">{quantity}</span>
+              <span className="w-10 text-center text-white text-lg font-semibold">{quantity}</span>
               <button
                 onClick={() => setQuantity((q) => q + 1)}
-                className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 text-gray-600 hover:text-black transition cursor-pointer"
+                className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-slate-800 text-slate-300 hover:text-white transition cursor-pointer"
                 title="Increase"
               >
                 <Plus size={14} />
@@ -177,16 +178,16 @@ export default function ProductDetails() {
             <button
               onClick={() => handleAddToCart(true)}
               disabled={adding}
-              className="flex-grow flex items-center justify-center gap-2 py-4 bg-bg-surface border border-gray-300 hover:border-brand-primary text-black font-bold rounded-2xl hover:bg-gray-50 transition duration-200 cursor-pointer disabled:opacity-50"
+              className="flex-grow flex items-center justify-center gap-2 py-4 bg-slate-800/90 border border-white/15 hover:border-amber-400 text-white font-bold rounded-2xl hover:bg-slate-700 transition duration-200 cursor-pointer disabled:opacity-50"
             >
-              <ShoppingCart size={18} />
+              <ShoppingCart size={18} className="text-amber-400" />
               Add to Cart
             </button>
             
             <button
               onClick={handleBuyNow}
               disabled={adding}
-              className="flex-grow flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-brand-primary to-indigo-600 hover:opacity-95 text-white font-bold rounded-2xl shadow-xl transition duration-200 cursor-pointer disabled:opacity-50"
+              className="flex-grow flex items-center justify-center gap-2 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-2xl shadow-xl shadow-amber-500/20 transition duration-200 cursor-pointer disabled:opacity-50"
             >
               <CreditCard size={18} />
               Buy It Now
@@ -194,8 +195,8 @@ export default function ProductDetails() {
           </div>
 
           {/* Security badge info */}
-          <div className="flex items-center justify-center sm:justify-start gap-2 text-xs text-gray-500 pt-4">
-            <ShieldCheck size={16} className="text-emerald-500" />
+          <div className="flex items-center justify-center sm:justify-start gap-2 text-xs text-slate-400 pt-4">
+            <ShieldCheck size={16} className="text-emerald-400" />
             <span>256-Bit SSL Encrypted merchant validation</span>
           </div>
         </div>
