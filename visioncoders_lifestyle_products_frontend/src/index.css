@@ -4,23 +4,31 @@
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   
-  /* Luxury Minimalist Color Palette */
-  --color-bg-main: #F6F2EC;
+  /* Warm Luxury Champagne & Gold Theme Palette */
+  --color-bg-main: #FAF6F0;
   --color-bg-surface: #FFFFFF;
-  --color-bg-elevated: #F9F7F5;
-  --color-brand-primary: #1F1F1F;
-  --color-brand-accent: #C9A66B;
-  --color-text-main: #1F1F1F;
-  --color-text-muted: #666666;
-  --color-border-main: #EAEAEA;
+  --color-bg-elevated: #F5EFE6;
+  --color-brand-primary: #1C1917;
+  --color-brand-accent: #C59B27;
+  --color-brand-gold-light: #F7E7C4;
+  --color-brand-gold-dark: #A37714;
+  --color-text-main: #1F1A14;
+  --color-text-muted: #786C5E;
+  --color-border-main: #EAE1D2;
 }
 
 @layer base {
   body {
-    background-color: var(--color-bg-main);
+    background-color: #FAF6F0;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.09) 0px, transparent 55%),
+      radial-gradient(at 100% 0%, rgba(247, 231, 196, 0.35) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(245, 239, 230, 0.85) 0px, transparent 60%);
+    background-attachment: fixed;
     color: var(--color-text-main);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
   }
   
   h1, h2, h3, .font-serif-luxury {
@@ -39,57 +47,88 @@
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Warm Champagne Gold */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #F6F2EC;
+  background: #FAF6F0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E5DCD0;
-  border-radius: 3px;
+  background: #E2D3BE;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C9A66B;
+  background: #C59B27;
 }
 
-/* Minimalist Glassmorphism utility for light beige mode */
+/* Luxury Glassmorphism & Gold Panels */
 .glass {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  box-shadow: 0 10px 30px -10px rgba(181, 137, 30, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(234, 225, 210, 0.8);
+  box-shadow: 0 4px 20px rgba(120, 108, 94, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 12px 30px rgba(197, 155, 39, 0.12);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #1C1917 0%, #85610D 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-badge {
+  background: linear-gradient(135deg, #FFF8E7 0%, #F5E8C7 100%);
+  color: #85610D;
+  border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 /* Custom styling for inputs */
 input, select, textarea {
   background-color: #FFFFFF !important;
-  color: #1F1F1F !important;
-  border: 1px solid #EAEAEA !important;
+  color: #1F1A14 !important;
+  border: 1px solid #E6DDD0 !important;
   transition: all 0.2s ease;
 }
 input:focus, select:focus, textarea:focus {
-  border-color: #C9A66B !important;
-  box-shadow: 0 0 0 2px rgba(201, 166, 107, 0.1) !important;
+  border-color: #C59B27 !important;
+  box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15) !important;
 }
 
 /* Modal overlay class */
 .modal-overlay {
-  background: rgba(31, 31, 31, 0.3);
-  backdrop-filter: blur(4px);
+  background: rgba(28, 25, 23, 0.45);
+  backdrop-filter: blur(6px);
 }
 
 /* Page fade-in */
 .animate-fadeIn {
-  animation: fadeIn 0.5s ease-out forwards;
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -97,7 +136,7 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
-/* High-priority override for the Cart page */
+/* High-priority override for the Cart page readability */
 .cart-page,
 .cart-page * {
     color: inherit;
@@ -114,8 +153,8 @@ input:focus, select:focus, textarea:focus {
 .cart-page th,
 .cart-page input,
 .cart-page button {
-    color: #000 !important;
-    -webkit-text-fill-color: #000 !important;
+    color: #1F1A14 !important;
+    -webkit-text-fill-color: #1F1A14 !important;
     opacity: 1 !important;
 }
 
@@ -139,4 +178,3 @@ input:focus, select:focus, textarea:focus {
     color: #e11d48 !important;
     -webkit-text-fill-color: #e11d48 !important;
 }
-

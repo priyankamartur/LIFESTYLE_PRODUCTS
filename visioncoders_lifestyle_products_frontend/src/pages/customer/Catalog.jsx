@@ -105,12 +105,12 @@ export default function Catalog() {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Top Search & Filter Bar */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-bg-surface/50 border border-white/5 p-6 rounded-2xl">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 glass p-6 rounded-2xl border border-[#EAE1D2]">
         <form onSubmit={handleSearchSubmit} className="relative w-full md:max-w-md">
-          <Search size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
+          <Search size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#786C5E]" />
           <input
             type="text"
-            className="w-full pl-11 pr-4 py-2.5 bg-bg-surface border border-white/10 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 rounded-xl outline-none text-white text-sm transition"
+            className="w-full pl-11 pr-4 py-2.5 bg-white border border-[#EAE1D2] focus:border-[#C59B27] focus:ring-2 focus:ring-[#C59B27]/20 rounded-xl outline-none text-[#1F1A14] text-sm transition"
             placeholder="Search products..."
             value={searchVal}
             onChange={(e) => setSearchVal(e.target.value)}
@@ -118,9 +118,9 @@ export default function Catalog() {
         </form>
 
         <div className="flex items-center gap-3 w-full md:w-auto justify-end">
-          <SlidersHorizontal size={16} className="text-gray-400" />
+          <SlidersHorizontal size={16} className="text-[#786C5E]" />
           <select
-            className="px-4 py-2.5 bg-bg-surface border border-white/10 focus:border-brand-primary rounded-xl text-sm text-gray-200 outline-none cursor-pointer"
+            className="px-4 py-2.5 bg-white border border-[#EAE1D2] focus:border-[#C59B27] rounded-xl text-sm text-[#1F1A14] outline-none cursor-pointer"
             value={`${sortBy}-${sortDir}`}
             onChange={(e) => {
               const [field, dir] = e.target.value.split('-');
@@ -141,19 +141,19 @@ export default function Catalog() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar Filters */}
         <aside className="space-y-6">
-          <div className="bg-bg-surface border border-white/5 rounded-2xl p-6 space-y-4">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-              <Filter size={16} className="text-brand-primary" />
+          <div className="glass rounded-2xl p-6 space-y-4 border border-[#EAE1D2]">
+            <h3 className="text-sm font-bold text-[#1F1A14] uppercase tracking-wider flex items-center gap-2">
+              <Filter size={16} className="text-[#C59B27]" />
               Categories
             </h3>
             
-            <div className="flex flex-col gap-1 text-sm text-gray-400">
+            <div className="flex flex-col gap-1 text-sm text-[#786C5E]">
               <button
                 onClick={() => handleCategorySelect('')}
                 className={`w-full text-left px-3 py-2 rounded-xl transition ${
                   selectedCategory === ''
-                    ? 'bg-brand-primary/10 text-brand-primary font-bold border-l-3 border-brand-primary'
-                    : 'hover:bg-white/5 hover:text-white'
+                    ? 'bg-[#C59B27]/15 text-[#85610D] font-bold border-l-3 border-[#C59B27]'
+                    : 'hover:bg-[#F5EFE6] hover:text-[#1F1A14]'
                 }`}
               >
                 All Products
@@ -164,8 +164,8 @@ export default function Catalog() {
                   onClick={() => handleCategorySelect(String(cat.id))}
                   className={`w-full text-left px-3 py-2 rounded-xl transition ${
                     selectedCategory === String(cat.id)
-                      ? 'bg-brand-primary/10 text-brand-primary font-bold border-l-3 border-brand-primary'
-                      : 'hover:bg-white/5 hover:text-white'
+                      ? 'bg-[#C59B27]/15 text-[#85610D] font-bold border-l-3 border-[#C59B27]'
+                      : 'hover:bg-[#F5EFE6] hover:text-[#1F1A14]'
                   }`}
                 >
                   {cat.name}

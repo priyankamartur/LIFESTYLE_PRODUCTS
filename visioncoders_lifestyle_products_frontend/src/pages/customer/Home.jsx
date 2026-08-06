@@ -48,19 +48,19 @@ export default function Home() {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto space-y-12 py-8 bg-[#F6F2EC]">
-        <div className="h-[450px] w-full bg-white rounded-[24px] animate-pulse shadow-sm"></div>
+      <div className="max-w-7xl mx-auto space-y-12 py-8">
+        <div className="h-[450px] w-full glass rounded-[24px] animate-pulse shadow-sm"></div>
         <div className="space-y-4">
-          <div className="h-6 bg-white rounded w-1/4"></div>
+          <div className="h-6 bg-white/60 rounded w-1/4"></div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="h-24 bg-white rounded-[24px] animate-pulse"></div>
-            <div className="h-24 bg-white rounded-[24px] animate-pulse"></div>
-            <div className="h-24 bg-white rounded-[24px] animate-pulse"></div>
-            <div className="h-24 bg-white rounded-[24px] animate-pulse"></div>
+            <div className="h-24 glass rounded-[24px] animate-pulse"></div>
+            <div className="h-24 glass rounded-[24px] animate-pulse"></div>
+            <div className="h-24 glass rounded-[24px] animate-pulse"></div>
+            <div className="h-24 glass rounded-[24px] animate-pulse"></div>
           </div>
         </div>
         <div className="space-y-4">
-          <div className="h-6 bg-white rounded w-1/4"></div>
+          <div className="h-6 bg-white/60 rounded w-1/4"></div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <Skeleton variant="card" count={4} />
           </div>
@@ -70,10 +70,10 @@ export default function Home() {
   }
 
   return (
-    <div className="space-y-24 animate-fadeIn bg-[#F6F2EC] text-[#1F1F1F]">
+    <div className="space-y-24 animate-fadeIn text-[#1F1A14]">
       
       {/* Luxury Minimalist Hero Section */}
-      <section className="relative rounded-[24px] overflow-hidden bg-white border border-gray-150 py-16 px-8 sm:px-12 md:px-20 flex flex-col md:flex-row items-center gap-12 shadow-sm">
+      <section className="relative rounded-[24px] overflow-hidden glass border border-[#EAE1D2] py-16 px-8 sm:px-12 md:px-20 flex flex-col md:flex-row items-center gap-12 shadow-sm">
         <div className="flex-1 space-y-6 text-left max-w-xl">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F6F2EC] text-[#C9A66B] rounded-full text-[10px] font-bold uppercase tracking-[0.15em]">
             <Sparkles size={11} />

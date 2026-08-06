@@ -57,10 +57,10 @@ export default function ProductCard({ product }) {
   const imageSrc = getProductImg(product.name, product.imageUrl);
 
   return (
-    <div className="group bg-white border border-gray-150 rounded-[20px] overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full relative">
+    <div className="group glass-card rounded-[20px] overflow-hidden flex flex-col h-full relative border border-[#EAE1D2]/80">
       
       {/* Image Container with Zoom effect on hover */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-50 flex-shrink-0">
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF6F0] flex-shrink-0">
         <img
           src={imageSrc}
           alt={product.name}
@@ -71,7 +71,7 @@ export default function ProductCard({ product }) {
         {/* Wishlist Heart Icon (Top-Right) */}
         <button
           onClick={toggleWishlist}
-          className="absolute top-4 right-4 w-9 h-9 bg-white/95 rounded-full flex items-center justify-center text-gray-400 hover:text-rose-500 hover:scale-110 shadow-sm border border-gray-100 transition cursor-pointer z-20"
+          className="absolute top-4 right-4 w-9 h-9 bg-white/95 rounded-full flex items-center justify-center text-gray-400 hover:text-rose-500 hover:scale-110 shadow-sm border border-[#EAE1D2] transition cursor-pointer z-20"
           title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
         >
           <Heart size={14} fill={isWishlisted ? "currentColor" : "none"} className={isWishlisted ? "text-rose-500" : ""} />
@@ -81,7 +81,7 @@ export default function ProductCard({ product }) {
         <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Link
             to={`/product/${product.id}`}
-            className="flex items-center gap-1.5 px-4.5 py-2.5 bg-white text-gray-900 font-semibold rounded-full text-xs shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300 hover:bg-gray-50 border border-gray-100"
+            className="flex items-center gap-1.5 px-4.5 py-2.5 bg-white text-gray-900 font-semibold rounded-full text-xs shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300 hover:bg-[#FAF6F0] border border-[#EAE1D2]"
           >
             <Eye size={12} />
             Quick View
@@ -89,7 +89,7 @@ export default function ProductCard({ product }) {
         </div>
 
         {product.featured && (
-          <span className="absolute top-4 left-4 bg-gray-900 text-white text-[9px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-md shadow-sm">
+          <span className="absolute top-4 left-4 gold-badge text-[9px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-md shadow-sm">
             Featured
           </span>
         )}

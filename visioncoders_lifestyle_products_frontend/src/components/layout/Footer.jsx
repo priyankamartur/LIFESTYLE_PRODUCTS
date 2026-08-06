@@ -4,7 +4,7 @@ import { ShoppingBag } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-12 mt-20 text-gray-500">
+    <footer className="bg-[#F5EFE6]/80 border-t border-[#EAE1D2] py-12 mt-20 text-[#786C5E]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           {/* Brand Info */}
