@@ -105,12 +105,12 @@ export default function Catalog() {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Top Search & Filter Bar */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 glass p-6 rounded-2xl border border-[#EAE1D2]">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4 glass p-6 rounded-2xl border border-white/10">
         <form onSubmit={handleSearchSubmit} className="relative w-full md:max-w-md">
-          <Search size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#786C5E]" />
+          <Search size={18} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            className="w-full pl-11 pr-4 py-2.5 bg-white border border-[#EAE1D2] focus:border-[#C59B27] focus:ring-2 focus:ring-[#C59B27]/20 rounded-xl outline-none text-[#1F1A14] text-sm transition"
+            className="w-full pl-11 pr-4 py-2.5 bg-slate-900/80 border border-white/15 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 rounded-xl outline-none text-slate-100 text-sm transition placeholder-slate-400"
             placeholder="Search products..."
             value={searchVal}
             onChange={(e) => setSearchVal(e.target.value)}
@@ -118,9 +118,9 @@ export default function Catalog() {
         </form>
 
         <div className="flex items-center gap-3 w-full md:w-auto justify-end">
-          <SlidersHorizontal size={16} className="text-[#786C5E]" />
+          <SlidersHorizontal size={16} className="text-slate-400" />
           <select
-            className="px-4 py-2.5 bg-white border border-[#EAE1D2] focus:border-[#C59B27] rounded-xl text-sm text-[#1F1A14] outline-none cursor-pointer"
+            className="px-4 py-2.5 bg-slate-900/80 border border-white/15 focus:border-amber-400 rounded-xl text-sm text-slate-100 outline-none cursor-pointer"
             value={`${sortBy}-${sortDir}`}
             onChange={(e) => {
               const [field, dir] = e.target.value.split('-');
@@ -129,10 +129,10 @@ export default function Catalog() {
               setPage(0);
             }}
           >
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="name-asc">Name: A to Z</option>
-            <option value="name-desc">Name: Z to A</option>
+            <option value="price-asc" className="bg-slate-900 text-white">Price: Low to High</option>
+            <option value="price-desc" className="bg-slate-900 text-white">Price: High to Low</option>
+            <option value="name-asc" className="bg-slate-900 text-white">Name: A to Z</option>
+            <option value="name-desc" className="bg-slate-900 text-white">Name: Z to A</option>
           </select>
         </div>
       </div>
@@ -141,19 +141,19 @@ export default function Catalog() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar Filters */}
         <aside className="space-y-6">
-          <div className="glass rounded-2xl p-6 space-y-4 border border-[#EAE1D2]">
-            <h3 className="text-sm font-bold text-[#1F1A14] uppercase tracking-wider flex items-center gap-2">
-              <Filter size={16} className="text-[#C59B27]" />
+          <div className="glass rounded-2xl p-6 space-y-4 border border-white/10">
+            <h3 className="text-sm font-bold text-slate-100 uppercase tracking-wider flex items-center gap-2">
+              <Filter size={16} className="text-amber-400" />
               Categories
             </h3>
             
-            <div className="flex flex-col gap-1 text-sm text-[#786C5E]">
+            <div className="flex flex-col gap-1 text-sm text-slate-400">
               <button
                 onClick={() => handleCategorySelect('')}
                 className={`w-full text-left px-3 py-2 rounded-xl transition ${
                   selectedCategory === ''
-                    ? 'bg-[#C59B27]/15 text-[#85610D] font-bold border-l-3 border-[#C59B27]'
-                    : 'hover:bg-[#F5EFE6] hover:text-[#1F1A14]'
+                    ? 'bg-amber-500/20 text-amber-300 font-bold border-l-3 border-amber-400'
+                    : 'hover:bg-white/5 hover:text-slate-100'
                 }`}
               >
                 All Products
@@ -164,8 +164,8 @@ export default function Catalog() {
                   onClick={() => handleCategorySelect(String(cat.id))}
                   className={`w-full text-left px-3 py-2 rounded-xl transition ${
                     selectedCategory === String(cat.id)
-                      ? 'bg-[#C59B27]/15 text-[#85610D] font-bold border-l-3 border-[#C59B27]'
-                      : 'hover:bg-[#F5EFE6] hover:text-[#1F1A14]'
+                      ? 'bg-amber-500/20 text-amber-300 font-bold border-l-3 border-amber-400'
+                      : 'hover:bg-white/5 hover:text-slate-100'
                   }`}
                 >
                   {cat.name}

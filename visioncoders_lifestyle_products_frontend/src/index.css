@@ -4,28 +4,28 @@
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   
-  /* Warm Luxury Champagne & Gold Theme Palette */
-  --color-bg-main: #FAF6F0;
-  --color-bg-surface: #FFFFFF;
-  --color-bg-elevated: #F5EFE6;
-  --color-brand-primary: #1C1917;
-  --color-brand-accent: #C59B27;
-  --color-brand-gold-light: #F7E7C4;
-  --color-brand-gold-dark: #A37714;
-  --color-text-main: #1F1A14;
-  --color-text-muted: #786C5E;
-  --color-border-main: #EAE1D2;
+  /* Aesthetic Obsidian Dark & Gold Theme Palette */
+  --color-bg-main: #0B0F17;
+  --color-bg-surface: #111827;
+  --color-bg-elevated: #1F2937;
+  --color-brand-primary: #F8FAFC;
+  --color-brand-accent: #F59E0B;
+  --color-brand-gold-light: #FDE68A;
+  --color-brand-gold-dark: #D97706;
+  --color-text-main: #F1F5F9;
+  --color-text-muted: #94A3B8;
+  --color-border-main: rgba(255, 255, 255, 0.1);
 }
 
 @layer base {
   body {
-    background-color: #FAF6F0;
+    background-color: #0B0F17;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(212, 175, 55, 0.09) 0px, transparent 55%),
-      radial-gradient(at 100% 0%, rgba(247, 231, 196, 0.35) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(245, 239, 230, 0.85) 0px, transparent 60%);
+      radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 55%),
+      radial-gradient(at 50% 100%, rgba(30, 27, 75, 0.35) 0px, transparent 65%);
     background-attachment: fixed;
-    color: var(--color-text-main);
+    color: #F1F5F9;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
@@ -43,81 +43,82 @@
   
   th, td {
     padding: 12px 16px;
-    border-bottom: 1px solid var(--color-border-main);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
-/* Custom Scrollbar - Warm Champagne Gold */
+/* Custom Scrollbar - Dark Obsidian & Gold */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF6F0;
+  background: #0B0F17;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E2D3BE;
+  background: #1E293B;
   border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C59B27;
+  background: #F59E0B;
 }
 
-/* Luxury Glassmorphism & Gold Panels */
+/* Luxury Dark Glassmorphism & Gold Panels */
 .glass {
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.18);
-  box-shadow: 0 10px 30px -10px rgba(181, 137, 30, 0.08);
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(234, 225, 210, 0.8);
-  box-shadow: 0 4px 20px rgba(120, 108, 94, 0.05);
+  background: rgba(17, 24, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(212, 175, 55, 0.35);
-  box-shadow: 0 12px 30px rgba(197, 155, 39, 0.12);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 12px 35px rgba(245, 158, 11, 0.18);
 }
 
 .gold-glow {
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #1C1917 0%, #85610D 50%, #D4AF37 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FBBF24 50%, #D97706 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gold-badge {
-  background: linear-gradient(135deg, #FFF8E7 0%, #F5E8C7 100%);
-  color: #85610D;
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.35) 100%);
+  color: #FDE68A;
+  border: 1px solid rgba(245, 158, 11, 0.4);
 }
 
 /* Custom styling for inputs */
 input, select, textarea {
-  background-color: #FFFFFF !important;
-  color: #1F1A14 !important;
-  border: 1px solid #E6DDD0 !important;
+  background-color: rgba(15, 23, 42, 0.85) !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   transition: all 0.2s ease;
 }
 input:focus, select:focus, textarea:focus {
-  border-color: #C59B27 !important;
-  box-shadow: 0 0 0 3px rgba(197, 155, 39, 0.15) !important;
+  border-color: #F59E0B !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2) !important;
 }
 
 /* Modal overlay class */
 .modal-overlay {
-  background: rgba(28, 25, 23, 0.45);
-  backdrop-filter: blur(6px);
+  background: rgba(3, 7, 18, 0.75);
+  backdrop-filter: blur(8px);
 }
 
 /* Page fade-in */
@@ -134,47 +135,4 @@ input:focus, select:focus, textarea:focus {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* High-priority override for the Cart page readability */
-.cart-page,
-.cart-page * {
-    color: inherit;
-}
-
-.cart-page h1,
-.cart-page h2,
-.cart-page h3,
-.cart-page p,
-.cart-page span,
-.cart-page strong,
-.cart-page label,
-.cart-page td,
-.cart-page th,
-.cart-page input,
-.cart-page button {
-    color: #1F1A14 !important;
-    -webkit-text-fill-color: #1F1A14 !important;
-    opacity: 1 !important;
-}
-
-/* Restore readability for elements on dark backgrounds or highlights */
-.cart-page .bg-gradient-to-r,
-.cart-page .bg-gradient-to-r * {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-}
-
-.cart-page .text-emerald-400,
-.cart-page .text-emerald-600 {
-    color: #059669 !important;
-    -webkit-text-fill-color: #059669 !important;
-}
-
-.cart-page .text-rose-400,
-.cart-page .text-rose-600,
-.cart-page button:hover .lucide-trash2,
-.cart-page button:hover .lucide {
-    color: #e11d48 !important;
-    -webkit-text-fill-color: #e11d48 !important;
 }

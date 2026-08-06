@@ -57,10 +57,10 @@ export default function ProductCard({ product }) {
   const imageSrc = getProductImg(product.name, product.imageUrl);
 
   return (
-    <div className="group glass-card rounded-[20px] overflow-hidden flex flex-col h-full relative border border-[#EAE1D2]/80">
+    <div className="group glass-card rounded-[20px] overflow-hidden flex flex-col h-full relative border border-white/10">
       
       {/* Image Container with Zoom effect on hover */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF6F0] flex-shrink-0">
+      <div className="relative aspect-[4/3] overflow-hidden bg-slate-900/60 flex-shrink-0">
         <img
           src={imageSrc}
           alt={product.name}
@@ -71,61 +71,61 @@ export default function ProductCard({ product }) {
         {/* Wishlist Heart Icon (Top-Right) */}
         <button
           onClick={toggleWishlist}
-          className="absolute top-4 right-4 w-9 h-9 bg-white/95 rounded-full flex items-center justify-center text-gray-400 hover:text-rose-500 hover:scale-110 shadow-sm border border-[#EAE1D2] transition cursor-pointer z-20"
+          className="absolute top-4 right-4 w-9 h-9 bg-slate-900/90 rounded-full flex items-center justify-center text-slate-400 hover:text-rose-400 hover:scale-110 shadow-md border border-white/10 transition cursor-pointer z-20"
           title={isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
         >
           <Heart size={14} fill={isWishlisted ? "currentColor" : "none"} className={isWishlisted ? "text-rose-500" : ""} />
         </button>
 
         {/* Quick View Details Overlay */}
-        <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Link
             to={`/product/${product.id}`}
-            className="flex items-center gap-1.5 px-4.5 py-2.5 bg-white text-gray-900 font-semibold rounded-full text-xs shadow-md transform translate-y-2 group-hover:translate-y-0 transition duration-300 hover:bg-[#FAF6F0] border border-[#EAE1D2]"
+            className="flex items-center gap-1.5 px-4.5 py-2.5 bg-slate-900/90 text-slate-100 font-semibold rounded-full text-xs shadow-lg transform translate-y-2 group-hover:translate-y-0 transition duration-300 hover:bg-slate-800 border border-white/15"
           >
-            <Eye size={12} />
+            <Eye size={12} className="text-amber-400" />
             Quick View
           </Link>
         </div>
 
         {product.featured && (
-          <span className="absolute top-4 left-4 gold-badge text-[9px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-md shadow-sm">
+          <span className="absolute top-4 left-4 gold-badge text-[9px] uppercase font-bold tracking-widest px-2.5 py-0.5 rounded-md shadow-md">
             Featured
           </span>
         )}
       </div>
 
       {/* Info Content */}
-      <div className="p-5 flex flex-col flex-grow bg-white">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 block">
+      <div className="p-5 flex flex-col flex-grow bg-slate-900/40 text-slate-100">
+        <span className="text-[10px] font-bold text-amber-400/90 uppercase tracking-widest mb-1.5 block">
           {product.categoryName || 'Lifestyle'}
         </span>
         
-        <h3 className="text-sm font-medium text-gray-900 group-hover:text-amber-700 transition duration-200 line-clamp-2 h-10 mb-2" title={product.name}>
+        <h3 className="text-sm font-medium text-slate-100 group-hover:text-amber-400 transition duration-200 line-clamp-2 h-10 mb-2" title={product.name}>
           <Link to={`/product/${product.id}`} className="font-serif-luxury">{product.name}</Link>
         </h3>
 
         {/* Rating */}
-        <div className="flex items-center gap-1 text-amber-500 text-xs mb-4">
+        <div className="flex items-center gap-1 text-amber-400 text-xs mb-4">
           <div className="flex">
-            <Star size={11} fill="currentColor" className="text-amber-500 border-none" />
-            <Star size={11} fill="currentColor" className="text-amber-500 border-none" />
-            <Star size={11} fill="currentColor" className="text-amber-500 border-none" />
-            <Star size={11} fill="currentColor" className="text-amber-500 border-none" />
-            <Star size={11} fill="currentColor" className="text-amber-500 border-none opacity-20" />
+            <Star size={11} fill="currentColor" className="text-amber-400 border-none" />
+            <Star size={11} fill="currentColor" className="text-amber-400 border-none" />
+            <Star size={11} fill="currentColor" className="text-amber-400 border-none" />
+            <Star size={11} fill="currentColor" className="text-amber-400 border-none" />
+            <Star size={11} fill="currentColor" className="text-amber-400 border-none opacity-25" />
           </div>
-          <span className="text-gray-400 text-[10px] font-medium">(4.0)</span>
+          <span className="text-slate-400 text-[10px] font-medium">(4.0)</span>
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-          <span className="text-base font-medium font-serif-luxury text-gray-900">${product.price.toFixed(2)}</span>
+        <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+          <span className="text-base font-semibold font-serif-luxury text-amber-400">${product.price.toFixed(2)}</span>
           
           <div className="flex items-center gap-1.5">
             {/* Direct Details Link */}
             <Link
               to={`/product/${product.id}`}
-              className="flex items-center justify-center w-8.5 h-8.5 bg-gray-50 border border-gray-200 hover:border-gray-950 text-gray-600 hover:text-gray-950 rounded-xl transition"
+              className="flex items-center justify-center w-8.5 h-8.5 bg-slate-800/80 border border-white/10 hover:border-amber-400 text-slate-300 hover:text-amber-400 rounded-xl transition"
               title="View Product Details"
             >
               <Eye size={13} />
@@ -135,11 +135,11 @@ export default function ProductCard({ product }) {
             <button
               onClick={handleAddToCart}
               disabled={adding}
-              className="flex items-center justify-center w-8.5 h-8.5 bg-gray-900 hover:bg-gray-800 text-white rounded-xl transition cursor-pointer disabled:opacity-50"
+              className="flex items-center justify-center w-8.5 h-8.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl transition cursor-pointer disabled:opacity-50 font-bold shadow-md"
               title="Add to Cart"
             >
               {adding ? (
-                <span className="w-4 h-4 border-2 border-gray-400 border-t-white rounded-full animate-spin"></span>
+                <span className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></span>
               ) : (
                 <ShoppingCart size={13} />
               )}

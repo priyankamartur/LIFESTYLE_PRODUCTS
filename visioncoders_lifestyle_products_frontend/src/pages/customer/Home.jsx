@@ -70,25 +70,25 @@ export default function Home() {
   }
 
   return (
-    <div className="space-y-24 animate-fadeIn text-[#1F1A14]">
+    <div className="space-y-24 animate-fadeIn text-slate-100">
       
       {/* Luxury Minimalist Hero Section */}
-      <section className="relative rounded-[24px] overflow-hidden glass border border-[#EAE1D2] py-16 px-8 sm:px-12 md:px-20 flex flex-col md:flex-row items-center gap-12 shadow-sm">
+      <section className="relative rounded-[24px] overflow-hidden glass border border-white/10 py-16 px-8 sm:px-12 md:px-20 flex flex-col md:flex-row items-center gap-12 shadow-xl">
         <div className="flex-1 space-y-6 text-left max-w-xl">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#F6F2EC] text-[#C9A66B] rounded-full text-[10px] font-bold uppercase tracking-[0.15em]">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-[10px] font-bold uppercase tracking-[0.15em]">
             <Sparkles size={11} />
             ELEVATED ESSENTIALS
           </span>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium font-serif-luxury text-gray-900 tracking-tight leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium font-serif-luxury gold-gradient-text tracking-tight leading-tight">
             Lifestyle Products
           </h1>
-          <p className="text-gray-600 font-sans text-sm sm:text-base leading-relaxed max-w-md">
+          <p className="text-slate-300 font-sans text-sm sm:text-base leading-relaxed max-w-md">
             Discover premium skincare, beauty, and lifestyle essentials for everyday wellness. Crafted to combine everyday utility with elevated aesthetic design.
           </p>
           <div className="pt-4">
             <Link
               to="/catalog"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white rounded-full text-xs font-bold tracking-[0.15em] uppercase transition duration-300 shadow-sm cursor-pointer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-full text-xs font-extrabold tracking-[0.15em] uppercase transition duration-300 shadow-lg shadow-amber-500/20 cursor-pointer"
             >
               <span>Shop Collection</span>
               <ArrowRight size={13} />
@@ -96,8 +96,8 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Hero Skincare / Lifestyle Display Image */}
-        <div className="flex-1 w-full max-w-md aspect-[4/3] md:max-w-none rounded-[20px] overflow-hidden shadow-md border border-gray-100 bg-[#F9F7F5]">
+        {/* Hero Display Image */}
+        <div className="flex-1 w-full max-w-md aspect-[4/3] md:max-w-none rounded-[20px] overflow-hidden shadow-2xl border border-white/10 bg-slate-900">
           <img 
             src="/hero-banner.jpg" 
             alt="Wellness Essentials"
@@ -109,8 +109,8 @@ export default function Home() {
       {/* Featured Categories section */}
       <section className="space-y-8">
         <div className="text-center space-y-2 max-w-md mx-auto">
-          <h2 className="text-3xl font-medium text-gray-900 tracking-tight">Shop by Category</h2>
-          <p className="text-xs font-bold uppercase tracking-widest text-[#C9A66B]">Explore our curated collections</p>
+          <h2 className="text-3xl font-medium text-slate-100 tracking-tight font-serif-luxury">Shop by Category</h2>
+          <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Explore our curated collections</p>
         </div>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -118,16 +118,16 @@ export default function Home() {
             <Link
               key={cat.id}
               to={`/catalog?categoryId=${cat.id}`}
-              className="group bg-white border border-gray-150 rounded-[24px] p-6 flex flex-col items-center gap-4 hover:shadow-md transition-all duration-300"
+              className="group glass-card border border-white/10 rounded-[24px] p-6 flex flex-col items-center gap-4 hover:border-amber-400/40 transition-all duration-300"
             >
-              <div className="w-16 h-16 rounded-full overflow-hidden border border-gray-100 group-hover:scale-105 transition-all duration-300">
+              <div className="w-16 h-16 rounded-full overflow-hidden border border-white/10 group-hover:scale-105 transition-all duration-300 bg-slate-900">
                 <img
                   src={getCategoryImg(cat.name)}
                   alt={cat.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-gray-800 group-hover:text-[#C9A66B] transition">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-200 group-hover:text-amber-400 transition">
                 {cat.name}
               </span>
             </Link>
@@ -137,12 +137,12 @@ export default function Home() {
 
       {/* Featured Products Section */}
       <section className="space-y-8">
-        <div className="flex justify-between items-end border-b border-gray-200 pb-4">
+        <div className="flex justify-between items-end border-b border-white/10 pb-4">
           <div className="space-y-1">
-            <h2 className="text-2xl font-medium text-gray-900 tracking-tight">Featured Curations</h2>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#C9A66B]">Handpicked skincare & objects</p>
+            <h2 className="text-2xl font-medium text-slate-100 tracking-tight font-serif-luxury">Featured Curations</h2>
+            <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Handpicked skincare & objects</p>
           </div>
-          <Link to="/catalog" className="text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#C9A66B] flex items-center gap-1">
+          <Link to="/catalog" className="text-amber-400 font-bold text-xs uppercase tracking-widest hover:text-amber-300 flex items-center gap-1">
             <span>View All</span>
             <ArrowRight size={13} />
           </Link>
@@ -157,12 +157,12 @@ export default function Home() {
 
       {/* Best Sellers Section */}
       <section className="space-y-8">
-        <div className="flex justify-between items-end border-b border-gray-200 pb-4">
+        <div className="flex justify-between items-end border-b border-white/10 pb-4">
           <div className="space-y-1">
-            <h2 className="text-2xl font-medium text-gray-900 tracking-tight">Best Sellers</h2>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#C9A66B]">Customer favorites & repeat purchases</p>
+            <h2 className="text-2xl font-medium text-slate-100 tracking-tight font-serif-luxury">Best Sellers</h2>
+            <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Customer favorites & repeat purchases</p>
           </div>
-          <Link to="/catalog" className="text-gray-900 font-bold text-xs uppercase tracking-widest hover:text-[#C9A66B] flex items-center gap-1">
+          <Link to="/catalog" className="text-amber-400 font-bold text-xs uppercase tracking-widest hover:text-amber-300 flex items-center gap-1">
             <span>View All</span>
             <ArrowRight size={13} />
           </Link>
