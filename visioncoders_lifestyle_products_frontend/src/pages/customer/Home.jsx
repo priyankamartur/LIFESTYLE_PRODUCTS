@@ -122,7 +122,7 @@ export default function Home() {
             >
               <div className="w-16 h-16 rounded-full overflow-hidden border border-white/10 group-hover:scale-105 transition-all duration-300 bg-slate-900">
                 <img
-                  src={getCategoryImg(cat.name)}
+                  src={getCategoryImg(cat.name, cat.imageUrl)}
                   alt={cat.name}
                   className="w-full h-full object-cover"
                 />

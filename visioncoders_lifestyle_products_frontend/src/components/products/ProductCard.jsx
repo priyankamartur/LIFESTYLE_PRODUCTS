@@ -67,6 +67,10 @@ export default function ProductCard({ product }) {
           alt={product.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80';
+          }}
         />
         
         {/* Wishlist Heart Icon (Top-Right) */}

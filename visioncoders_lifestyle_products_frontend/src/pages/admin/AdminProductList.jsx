@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { Plus, Edit, Trash2, Search, ArrowLeft, ArrowRight } from 'lucide-react';
 import apiService from '../../services/apiService';
 import { formatCurrency } from '../../utils/formatCurrency';
+import { getProductImg } from '../../utils/imageHelper';
 
 export default function AdminProductList() {
   const [products, setProducts] = useState([]);
@@ -105,7 +106,7 @@ export default function AdminProductList() {
                       <tr key={p.id} className="hover:bg-gray-850/50 transition">
                         <td className="py-4 pl-2 flex items-center gap-3">
                           <img
-                            src={p.imageUrl}
+                            src={getProductImg(p.name, p.imageUrl)}
                             alt={p.name}
                             className="w-10 h-10 object-cover rounded-lg border border-gray-800"
                             onError={(e) => {

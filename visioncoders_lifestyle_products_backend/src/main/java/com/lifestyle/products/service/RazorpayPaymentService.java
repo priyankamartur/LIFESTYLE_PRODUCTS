@@ -29,10 +29,10 @@ import java.time.LocalDateTime;
 @Service
 public class RazorpayPaymentService {
 
-    @Value("${razorpay.key.id}")
+    @Value("${razorpay.key.id:rzp_test_TLKKx1wzFP5anv}")
     private String keyId;
 
-    @Value("${razorpay.key.secret}")
+    @Value("${razorpay.key.secret:5cahiulX4jogIDzsTE0GNe3r}")
     private String keySecret;
 
     @Autowired
