@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Users, DollarSign, ShoppingCart, TrendingUp, ShieldCheck } from 'lucide-react';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function AdminDashboardNew() {
   const [stats, setStats] = useState(null);
@@ -50,7 +51,7 @@ export default function AdminDashboardNew() {
             <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-center justify-between shadow-lg">
               <div className="space-y-2">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Sales</span>
-                <div className="text-3xl font-black text-white">${(stats.totalRevenue || 0).toFixed(2)}</div>
+                <div className="text-3xl font-black text-white">{formatCurrency(stats.totalRevenue || 0)}</div>
               </div>
               <div className="w-12 h-12 flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-2xl">
                 <DollarSign size={22} />
@@ -112,7 +113,7 @@ export default function AdminDashboardNew() {
                               year: 'numeric'
                             })}
                           </td>
-                          <td className="py-3.5 font-bold text-white">${(order.totalAmount || 0).toFixed(2)}</td>
+                          <td className="py-3.5 font-bold text-white">{formatCurrency(order.totalAmount || 0)}</td>
                           <td className="py-3.5 text-right">
                             <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                               order.status === 'CONFIRMED' || order.status === 'DELIVERED'

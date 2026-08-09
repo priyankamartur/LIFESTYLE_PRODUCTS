@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ArrowLeft, AlertTriangle } from 'lucide-react';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function AdminProductDelete() {
   const { id } = useParams();
@@ -88,7 +89,7 @@ export default function AdminProductDelete() {
             />
             <div>
               <div className="text-sm font-semibold text-white">{product.name}</div>
-              <div className="text-xs text-gray-500">Retail Price: ${parseFloat(product.price || 0).toFixed(2)}</div>
+              <div className="text-xs text-gray-500">Retail Price: {formatCurrency(product.price || 0)}</div>
             </div>
           </div>
         )}

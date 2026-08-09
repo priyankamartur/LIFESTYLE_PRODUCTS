@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { Trash2, ShoppingBag, ArrowRight, Minus, Plus } from 'lucide-react';
 import useCart from '../../hooks/useCart';
 import { getProductImg } from '../../utils/imageHelper';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -86,7 +87,7 @@ export default function Cart() {
                   <h3 className="text-base font-bold text-white truncate hover:text-amber-400 transition">
                     <Link to={`/product/${item.productId}`}>{item.name}</Link>
                   </h3>
-                  <span className="text-xs text-slate-400 font-medium">${item.pricePerUnit.toFixed(2)} each</span>
+                  <span className="text-xs text-slate-400 font-medium">{formatCurrency(item.pricePerUnit)} each</span>
                 </div>
 
                 {/* Qty Selector */}
@@ -109,8 +110,8 @@ export default function Cart() {
                   </button>
                 </div>
 
-                <div className="w-24 text-right text-base font-extrabold text-amber-400">
-                  ${item.totalPrice.toFixed(2)}
+                <div className="w-28 text-right text-base font-extrabold text-amber-400">
+                  {formatCurrency(item.totalPrice)}
                 </div>
 
                 <button
@@ -133,7 +134,7 @@ export default function Cart() {
             <div className="space-y-3.5 text-sm text-slate-300 font-medium">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span className="text-white font-bold">${cart.overallTotalPrice.toFixed(2)}</span>
+                <span className="text-white font-bold">{formatCurrency(cart.overallTotalPrice)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
@@ -141,12 +142,12 @@ export default function Cart() {
               </div>
               <div className="flex justify-between">
                 <span>Taxes (Estimated)</span>
-                <span className="text-white font-bold">$0.00</span>
+                <span className="text-white font-bold">{formatCurrency(0)}</span>
               </div>
               <hr className="border-white/10 my-2" />
               <div className="flex justify-between text-base font-black text-white">
                 <span>Estimated Total</span>
-                <span className="text-amber-400 font-serif-luxury text-xl">${cart.overallTotalPrice.toFixed(2)}</span>
+                <span className="text-amber-400 font-serif-luxury text-xl">{formatCurrency(cart.overallTotalPrice)}</span>
               </div>
             </div>
 

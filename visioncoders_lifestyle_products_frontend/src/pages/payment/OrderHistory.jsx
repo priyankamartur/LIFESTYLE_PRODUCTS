@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, Calendar, AlertCircle, RefreshCw, ChevronRight } from 'lucide-react';
 import apiService from '../../services/apiService';
 import { toast } from 'react-toastify';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function OrderHistory() {
   const navigate = useNavigate();
@@ -176,7 +177,7 @@ export default function OrderHistory() {
                 </div>
                 <div className="flex justify-between">
                   <span>Price Per Unit</span>
-                  <span className="font-medium text-gray-900 font-serif-luxury">${item.price.toFixed(2)}</span>
+                  <span className="font-medium text-gray-900 font-serif-luxury">{formatCurrency(item.price)}</span>
                 </div>
               </div>
             </div>
@@ -189,7 +190,7 @@ export default function OrderHistory() {
               <div className="text-right">
                 <span className="text-[10px] text-gray-400 block uppercase font-bold tracking-wider">Total</span>
                 <span className="font-bold text-gray-900 font-serif-luxury text-base">
-                  ${item.totalPrice.toFixed(2)}
+                  {formatCurrency(item.totalPrice)}
                 </span>
               </div>
             </div>

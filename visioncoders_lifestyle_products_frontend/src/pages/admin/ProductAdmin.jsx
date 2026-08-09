@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { Package2, Plus, Edit3, Trash2, List, ArrowLeft, ArrowRight, ShieldAlert, X } from 'lucide-react';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function ProductAdmin() {
   const [activeTab, setActiveTab] = useState('products'); // 'products' | 'categories'
@@ -238,7 +239,7 @@ export default function ProductAdmin() {
                       <tr key={p.id} className="text-gray-300">
                         <td className="font-semibold text-white py-4">{p.name}</td>
                         <td>{p.categoryName || 'General'}</td>
-                        <td>${p.price.toFixed(2)}</td>
+                        <td>{formatCurrency(p.price)}</td>
                         <td>
                           {p.featured ? (
                             <span className="badge bg-brand-primary/10 border border-brand-primary/20 text-brand-primary">Featured</span>
@@ -368,7 +369,7 @@ export default function ProductAdmin() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Price ($)*</label>
+                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Price (₹)*</label>
                   <input
                     type="number"
                     step="0.01"

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8081/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -43,8 +43,10 @@ axiosInstance.interceptors.response.use(
       }
     }
     
-    // Extract detailed backend message if available
-    if (error.response && error.response.data) {
+    // Handle Network Error (e.g. backend down, missing VITE_API_BASE_URL, or Mixed Content error)
+    if (!error.response && error.message === 'Network Error') {
+      error.message = 'Unable to reach backend server. Make sure your Java backend is running online and VITE_API_BASE_URL is configured on Vercel.';
+    } else if (error.response && error.response.data) {
       const data = error.response.data;
       const message = data.message || data.error || (typeof data === 'string' ? data : '');
       if (message) {

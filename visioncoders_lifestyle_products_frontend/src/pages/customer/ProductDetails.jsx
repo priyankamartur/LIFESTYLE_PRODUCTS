@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { ShoppingCart, CreditCard, ChevronLeft, Minus, Plus, Star, ShieldCheck } from 'lucide-react';
 import apiService from '../../services/apiService';
 import { getProductImg } from '../../utils/imageHelper';
+import { formatCurrency } from '../../utils/formatCurrency';
 import useCart from '../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
 
@@ -135,7 +136,7 @@ export default function ProductDetails() {
           </div>
 
           <div className="flex items-baseline gap-3">
-            <span className="text-3xl font-black text-amber-400 font-serif-luxury">${product.price.toFixed(2)}</span>
+            <span className="text-3xl font-black text-amber-400 font-serif-luxury">{formatCurrency(product.price)}</span>
             <span className="text-xs text-emerald-400 font-bold px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
               In Stock & Ready to Ship
             </span>

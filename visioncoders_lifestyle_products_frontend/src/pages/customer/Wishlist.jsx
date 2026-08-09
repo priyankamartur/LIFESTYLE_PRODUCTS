@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import useWishlist from '../../hooks/useWishlist';
 import useCart from '../../hooks/useCart';
 import { getProductImg } from '../../utils/imageHelper';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function Wishlist() {
   const { wishlist, removeFromWishlist, loading } = useWishlist();
@@ -125,7 +126,7 @@ export default function Wishlist() {
 
                 {/* Footer Actions */}
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                  <span className="text-base font-medium font-serif-luxury text-gray-900">${item.price.toFixed(2)}</span>
+                  <span className="text-base font-medium font-serif-luxury text-gray-900">{formatCurrency(item.price)}</span>
 
                   <div className="flex items-center gap-1.5">
                     {/* View Details button */}

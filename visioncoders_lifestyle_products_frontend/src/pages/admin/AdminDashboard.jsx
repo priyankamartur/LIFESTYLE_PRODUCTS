@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, BarChart, Bar } from 'recharts';
 import { Users, DollarSign, ShoppingCart, ArrowUpRight, ShieldAlert, BarChart2 } from 'lucide-react';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState(null);
@@ -80,7 +81,7 @@ export default function AdminDashboard() {
             <div className="bg-bg-surface border border-white/5 rounded-2xl p-6 flex items-center justify-between shadow-lg">
               <div className="space-y-2">
                 <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Sales</span>
-                <div className="text-3xl font-black text-white">${(stats.totalRevenue || 0).toFixed(2)}</div>
+                <div className="text-3xl font-black text-white">{formatCurrency(stats.totalRevenue || 0)}</div>
               </div>
               <div className="w-12 h-12 flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-2xl">
                 <DollarSign size={22} />
@@ -115,7 +116,7 @@ export default function AdminDashboard() {
             <div className="bg-bg-surface border border-white/5 p-6 rounded-3xl space-y-4 shadow-xl">
               <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
                 <BarChart2 size={16} className="text-brand-primary" />
-                Revenue Analytics ($)
+                Revenue Analytics (₹)
               </h3>
               <div className="h-64">
                 <ResponsiveContainer width="100%" height="100%">
@@ -181,7 +182,7 @@ export default function AdminDashboard() {
                       <tr key={o.id} className="text-gray-300">
                         <td className="py-3.5 font-bold text-white">#{o.id}</td>
                         <td className="py-3.5">{o.username || `Customer #${o.userId}`}</td>
-                        <td className="py-3.5 font-semibold text-white">${o.totalAmount.toFixed(2)}</td>
+                        <td className="py-3.5 font-semibold text-white">{formatCurrency(o.totalAmount)}</td>
                         <td className="py-3.5">
                           <span className={`inline-flex px-2 py-0.5 rounded-md text-[10px] uppercase font-bold border ${
                             o.status === 'DELIVERED' 

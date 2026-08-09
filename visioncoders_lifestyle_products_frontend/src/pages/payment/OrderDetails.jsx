@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ChevronLeft, Calendar, MapPin, CreditCard, Clock, CheckCircle2, AlertCircle, ShoppingBag } from 'lucide-react';
 import apiService from '../../services/apiService';
 import { toast } from 'react-toastify';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function OrderDetails() {
   const { orderId } = useParams();
@@ -182,7 +183,7 @@ export default function OrderDetails() {
                     <div className="flex flex-wrap md:flex-nowrap justify-between md:justify-end items-center gap-6 text-xs text-gray-500">
                       <div className="text-left md:text-right">
                         <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Unit Price</span>
-                        <span className="font-medium text-gray-900 font-serif-luxury">${item.price.toFixed(2)}</span>
+                        <span className="font-medium text-gray-900 font-serif-luxury">{formatCurrency(item.price)}</span>
                       </div>
                       <div className="text-left md:text-right">
                         <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Quantity</span>
@@ -190,7 +191,7 @@ export default function OrderDetails() {
                       </div>
                       <div className="text-right">
                         <span className="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Subtotal</span>
-                        <span className="font-semibold text-gray-950 font-serif-luxury">${item.totalPrice.toFixed(2)}</span>
+                        <span className="font-semibold text-gray-950 font-serif-luxury">{formatCurrency(item.totalPrice)}</span>
                       </div>
                     </div>
                   </div>
@@ -204,7 +205,7 @@ export default function OrderDetails() {
             <div className="w-full md:w-72 space-y-3.5 text-sm text-gray-500">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span className="font-medium text-gray-900 font-serif-luxury">${order.totalAmount.toFixed(2)}</span>
+                <span className="font-medium text-gray-900 font-serif-luxury">{formatCurrency(order.totalAmount)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
@@ -213,7 +214,7 @@ export default function OrderDetails() {
               <div className="border-t border-gray-100 pt-4 flex justify-between items-end">
                 <span className="font-bold text-gray-900 uppercase tracking-widest text-xs">Grand Total</span>
                 <span className="text-2xl font-bold font-serif-luxury text-[#C9A66B]">
-                  ${order.totalAmount.toFixed(2)}
+                  {formatCurrency(order.totalAmount)}
                 </span>
               </div>
             </div>

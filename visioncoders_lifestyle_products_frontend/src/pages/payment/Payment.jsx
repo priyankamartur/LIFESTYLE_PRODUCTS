@@ -5,6 +5,7 @@ import { CreditCard, CheckCircle, XCircle, ShieldCheck, ExternalLink } from 'luc
 import apiService from '../../services/apiService';
 import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function Payment() {
   const location = useLocation();
@@ -59,7 +60,7 @@ export default function Payment() {
       const options = {
         key: 'rzp_test_LifestyleProductsKey2026', // Test Razorpay Key
         amount: Math.round(amount * 100), // in Paisa
-        currency: 'USD',
+        currency: 'INR',
         name: 'Lifestyle Products',
         description: `Payment for order #${orderId}`,
         image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100&q=80',
@@ -228,7 +229,7 @@ export default function Payment() {
 
         <div className="flex justify-between items-center p-4 bg-brand-primary/5 border border-brand-primary/20 rounded-2xl">
           <span className="text-sm font-bold text-gray-400">Total Price:</span>
-          <span className="text-2xl font-black text-brand-primary">${amount.toFixed(2)}</span>
+          <span className="text-2xl font-black text-brand-primary">{formatCurrency(amount)}</span>
         </div>
 
         <div className="flex flex-col gap-1.5">
@@ -344,7 +345,7 @@ export default function Payment() {
               {loading ? (
                 <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
               ) : (
-                `Pay $${amount.toFixed(2)}`
+                `Pay ${formatCurrency(amount)}`
               )}
             </button>
           </form>

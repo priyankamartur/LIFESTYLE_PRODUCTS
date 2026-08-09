@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { User, ShoppingBag, Lock, Calendar, MapPin, Edit, Phone, Mail, ShieldAlert } from 'lucide-react';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState('orders'); // 'orders' | 'profile' | 'security'
@@ -187,7 +188,7 @@ export default function Profile() {
 
                         <div className="flex items-center gap-4">
                           <span className="font-black text-white text-base">
-                            ${order.totalAmount.toFixed(2)}
+                            {formatCurrency(order.totalAmount)}
                           </span>
                           <span className={`badge ${getStatusBadge(order.status)}`}>
                             {order.status}
@@ -217,7 +218,7 @@ export default function Profile() {
                                     {item.productName || `Product #${item.productId}`} <strong className="text-brand-primary">&times; {item.quantity}</strong>
                                   </span>
                                   <span className="font-semibold text-white">
-                                    ${(item.price * item.quantity).toFixed(2)}
+                                    {formatCurrency(item.price * item.quantity)}
                                   </span>
                                 </div>
                               ))}

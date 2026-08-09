@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ShoppingCart, Star, Eye, Heart } from 'lucide-react';
 import { toast } from 'react-toastify';
 import { getProductImg } from '../../utils/imageHelper';
+import { formatCurrency } from '../../utils/formatCurrency';
 import useCart from '../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
 import useWishlist from '../../hooks/useWishlist';
@@ -119,7 +120,7 @@ export default function ProductCard({ product }) {
 
         {/* Footer Actions */}
         <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
-          <span className="text-base font-semibold font-serif-luxury text-amber-400">${product.price.toFixed(2)}</span>
+          <span className="text-base font-semibold font-serif-luxury text-amber-400">{formatCurrency(product.price)}</span>
           
           <div className="flex items-center gap-1.5">
             {/* Direct Details Link */}

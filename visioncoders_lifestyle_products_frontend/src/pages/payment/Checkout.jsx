@@ -6,6 +6,7 @@ import { CreditCard, ChevronLeft, ArrowRight } from 'lucide-react';
 import useCart from '../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -205,7 +206,7 @@ export default function Checkout() {
                   {item.name} <strong className="text-gray-900">&times; {item.quantity}</strong>
                 </span>
                 <span className="font-semibold text-gray-900 font-serif-luxury">
-                  ${item.totalPrice.toFixed(2)}
+                  {formatCurrency(item.totalPrice)}
                 </span>
               </div>
             ))}
@@ -214,7 +215,7 @@ export default function Checkout() {
           <div className="border-t border-gray-100 pt-4 space-y-3.5 text-xs text-gray-500 font-medium">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="text-gray-900 font-semibold font-serif-luxury">${cart.overallTotalPrice.toFixed(2)}</span>
+              <span className="text-gray-900 font-semibold font-serif-luxury">{formatCurrency(cart.overallTotalPrice)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
@@ -225,7 +226,7 @@ export default function Checkout() {
           <div className="border-t border-gray-100 pt-5 flex justify-between items-end">
             <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Price</span>
             <span className="text-xl font-bold font-serif-luxury text-[#C9A66B]">
-              ${cart.overallTotalPrice.toFixed(2)}
+              {formatCurrency(cart.overallTotalPrice)}
             </span>
           </div>
         </div>

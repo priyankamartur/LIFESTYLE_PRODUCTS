@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, Link, Navigate } from 'react-router-dom';
 import { CheckCircle, ShoppingBag, ArrowRight } from 'lucide-react';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function OrderSuccess() {
   const location = useLocation();
@@ -53,7 +54,7 @@ export default function OrderSuccess() {
             <span className="text-gray-900 font-mono text-right text-[10px] break-all">{paymentId}</span>
             
             <span className="text-gray-400">Amount Charged</span>
-            <span className="text-gray-900 font-serif-luxury text-right font-bold">${parseFloat(amount || 0).toFixed(2)}</span>
+            <span className="text-gray-900 font-serif-luxury text-right font-bold">{formatCurrency(amount || 0)}</span>
             
             <span className="text-gray-400">Transaction Status</span>
             <span className="text-emerald-600 font-bold uppercase tracking-wider text-right">{paymentStatus || 'SUCCESS'}</span>

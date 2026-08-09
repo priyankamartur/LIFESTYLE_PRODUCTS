@@ -182,8 +182,24 @@ export default function Catalog() {
               <Skeleton variant="card" count={6} />
             </div>
           ) : error ? (
-            <div className="glass flex items-center justify-center p-12 rounded-2xl text-rose-400 font-medium">
-              {error}
+            <div className="glass flex flex-col items-center justify-center p-12 rounded-2xl text-rose-400 font-medium text-center space-y-4">
+              <p className="text-base font-semibold">{error}</p>
+              <p className="text-xs text-slate-400 max-w-md">
+                Unable to connect to the server. Please verify that the backend application is running on port 8081.
+              </p>
+              <button
+                onClick={() => {
+                  setError('');
+                  setLoading(true);
+                  // Trigger reload
+                  const cid = selectedCategory;
+                  setSelectedCategory('');
+                  setTimeout(() => setSelectedCategory(cid), 50);
+                }}
+                className="px-4 py-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 rounded-xl text-xs font-bold transition cursor-pointer"
+              >
+                Retry Connection
+              </button>
             </div>
           ) : products.length === 0 ? (
             <div className="glass flex flex-col items-center justify-center py-20 px-4 rounded-2xl text-center space-y-4">

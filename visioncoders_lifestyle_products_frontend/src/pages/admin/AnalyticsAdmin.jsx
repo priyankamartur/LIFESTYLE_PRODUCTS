@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { DollarSign, ShoppingCart, Users, TrendingUp, Calendar, BarChart2 } from 'lucide-react';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function AnalyticsAdmin() {
   const location = useLocation();
@@ -129,7 +130,7 @@ export default function AnalyticsAdmin() {
               <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-center justify-between shadow-lg">
                 <div className="space-y-2">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Total Sales</span>
-                  <div className="text-3xl font-black text-white">${(data.totalRevenue || 0).toFixed(2)}</div>
+                  <div className="text-3xl font-black text-white">{formatCurrency(data.totalRevenue || 0)}</div>
                 </div>
                 <div className="w-12 h-12 flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-2xl">
                   <DollarSign size={22} />
@@ -162,7 +163,7 @@ export default function AnalyticsAdmin() {
               <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 flex items-center justify-between shadow-lg">
                 <div className="space-y-2">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Avg Order Value</span>
-                  <div className="text-3xl font-black text-white">${(data.averageOrderValue || 0).toFixed(2)}</div>
+                  <div className="text-3xl font-black text-white">{formatCurrency(data.averageOrderValue || 0)}</div>
                 </div>
                 <div className="w-12 h-12 flex items-center justify-center bg-purple-500/10 border border-purple-500/20 text-purple-400 rounded-2xl">
                   <TrendingUp size={22} />
@@ -195,7 +196,7 @@ export default function AnalyticsAdmin() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-lg">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Daily Revenue</span>
-                  <div className="text-3xl font-black text-amber-500 mt-2">${Number(dailyRevenue || 0).toFixed(2)}</div>
+                  <div className="text-3xl font-black text-amber-500 mt-2">{formatCurrency(dailyRevenue || 0)}</div>
                   <div className="text-xs text-gray-500 mt-1">Report for {selectedDate}</div>
                 </div>
                 <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-lg">
@@ -245,7 +246,7 @@ export default function AnalyticsAdmin() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-lg">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Monthly Revenue</span>
-                  <div className="text-3xl font-black text-amber-500 mt-2">${(monthlyMatch.revenue || 0).toFixed(2)}</div>
+                  <div className="text-3xl font-black text-amber-500 mt-2">{formatCurrency(monthlyMatch.revenue || 0)}</div>
                   <div className="text-xs text-gray-500 mt-1">For {targetMonthStr}</div>
                 </div>
                 <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-lg">
@@ -286,7 +287,7 @@ export default function AnalyticsAdmin() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-lg">
                   <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Annual Revenue</span>
-                  <div className="text-3xl font-black text-amber-500 mt-2">${(yearlyMatch.revenue || 0).toFixed(2)}</div>
+                  <div className="text-3xl font-black text-amber-500 mt-2">{formatCurrency(yearlyMatch.revenue || 0)}</div>
                   <div className="text-xs text-gray-500 mt-1">For fiscal year {selectedYear}</div>
                 </div>
                 <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-lg">

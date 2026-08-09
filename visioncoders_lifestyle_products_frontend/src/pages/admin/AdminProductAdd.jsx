@@ -89,7 +89,7 @@ export default function AdminProductAdd() {
             {/* Price */}
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                Retail Price ($)
+                Retail Price (₹)
               </label>
               <input
                 type="number"

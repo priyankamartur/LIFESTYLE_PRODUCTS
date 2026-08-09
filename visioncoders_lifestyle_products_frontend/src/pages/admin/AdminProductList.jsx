@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Plus, Edit, Trash2, Search, ArrowLeft, ArrowRight } from 'lucide-react';
 import apiService from '../../services/apiService';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function AdminProductList() {
   const [products, setProducts] = useState([]);
@@ -115,7 +116,7 @@ export default function AdminProductList() {
                         </td>
                         <td className="py-4 font-mono text-xs">#{p.id}</td>
                         <td className="py-4 text-xs font-semibold">{p.categoryName || 'General'}</td>
-                        <td className="py-4 font-bold text-white">${parseFloat(p.price || 0).toFixed(2)}</td>
+                        <td className="py-4 font-bold text-white">{formatCurrency(p.price || 0)}</td>
                         <td className="py-4 text-right pr-2 space-x-2">
                           <Link
                             to={`/admin/products/edit/${p.id}`}
