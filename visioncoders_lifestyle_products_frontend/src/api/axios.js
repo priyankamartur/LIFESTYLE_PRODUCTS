@@ -32,13 +32,19 @@ axiosInstance.interceptors.response.use(
       );
       
       if (!isAuthEndpoint) {
-        console.warn('Session expired or unauthorized. Logging out...');
-        localStorage.removeItem('user');
-        window.dispatchEvent(new Event('authChange'));
+        const hasStoredUser = !!localStorage.getItem('user');
+        const isPublicPage = ['/', '/home', '/catalog'].includes(window.location.pathname) || window.location.pathname.startsWith('/product/');
         
-        // Prevent infinite redirect loop if already on login page
-        if (!window.location.pathname.includes('/login')) {
-          window.location.href = '/login?expired=true';
+        if (hasStoredUser) {
+          console.warn('Session expired or unauthorized. Logging out...');
+          localStorage.removeItem('user');
+          window.dispatchEvent(new Event('authChange'));
+          
+          if (!window.location.pathname.includes('/login')) {
+            window.location.href = '/login?expired=true';
+          }
+        } else if (!isPublicPage && !window.location.pathname.includes('/login')) {
+          window.location.href = '/login';
         }
       }
     }

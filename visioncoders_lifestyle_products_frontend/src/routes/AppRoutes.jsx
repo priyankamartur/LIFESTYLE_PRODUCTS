@@ -45,39 +45,11 @@ export default function AppRoutes() {
 
   return (
     <Routes>
-      {/* Root Route: Redirects to Home or Login based on authentication */}
-      <Route 
-        path="/" 
-        element={
-          isAuthenticated ? <Navigate to="/home" replace /> : <Navigate to="/login" replace />
-        } 
-      />
-
-      {/* Authenticated Customer Pages */}
-      <Route 
-        path="/home" 
-        element={
-          <RouteGuard requireAuth>
-            <Home />
-          </RouteGuard>
-        } 
-      />
-      <Route 
-        path="/catalog" 
-        element={
-          <RouteGuard requireAuth>
-            <Catalog />
-          </RouteGuard>
-        } 
-      />
-      <Route 
-        path="/product/:id" 
-        element={
-          <RouteGuard requireAuth>
-            <ProductDetails />
-          </RouteGuard>
-        } 
-      />
+      {/* Public Customer Pages */}
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/catalog" element={<Catalog />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
 
       {/* Guest Only Pages */}
       <Route 
