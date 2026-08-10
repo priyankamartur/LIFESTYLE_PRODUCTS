@@ -100,16 +100,11 @@ export default function Login() {
           </button>
         </form>
 
-        <div className="text-center text-sm text-gray-500 pt-2 space-y-2">
+        <div className="text-center text-sm text-gray-500 pt-2">
           <div>
             Don't have an account?{' '}
             <Link to="/register" className="text-gray-900 font-bold hover:underline">
               Register now
-            </Link>
-          </div>
-          <div className="pt-2 border-t border-gray-100">
-            <Link to="/admin/login" className="text-xs font-semibold text-amber-600 hover:text-amber-700 transition flex items-center justify-center gap-1">
-              <span>Switch to Admin Portal</span> &rarr;
             </Link>
           </div>
         </div>
