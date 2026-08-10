@@ -43,17 +43,6 @@ export default function Navbar() {
             >
               Shop
             </Link>
-            {isAdmin && (
-              <Link
-                to="/admin/dashboard"
-                className={`flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition duration-200 ${
-                  location.pathname.startsWith('/admin') ? 'border-b-2 border-amber-400 pb-1' : ''
-                }`}
-              >
-                <LayoutDashboard size={13} />
-                Admin Dashboard
-              </Link>
-            )}
           </div>
 
           {/* Centered Logo */}
