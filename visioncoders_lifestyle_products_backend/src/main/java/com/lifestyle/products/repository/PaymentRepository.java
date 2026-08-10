@@ -11,7 +11,7 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
     @org.springframework.data.jpa.repository.Query(value = "SELECT COALESCE(SUM(p.amount), 0) " +
                    "FROM payments p " +
-                   "WHERE DATE(p.payment_date) = DATE(:targetDate) AND p.payment_status = 'SUCCESS'", nativeQuery = true)
+                   "WHERE DATE(p.payment_date) = DATE(:targetDate) AND (p.payment_status = 'COMPLETED' OR p.payment_status = 'SUCCESS')", nativeQuery = true)
     java.math.BigDecimal getDailyPaymentsRevenue(@org.springframework.data.repository.query.Param("targetDate") String targetDate);
 }
 

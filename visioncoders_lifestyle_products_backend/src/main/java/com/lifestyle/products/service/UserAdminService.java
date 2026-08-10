@@ -1,5 +1,6 @@
 package com.lifestyle.products.service;
 
+import com.lifestyle.products.dto.AdminUserCreateRequestDto;
 import com.lifestyle.products.dto.AdminUserUpdateRequestDto;
 import com.lifestyle.products.dto.PagedResponseDto;
 import com.lifestyle.products.dto.UserAdminResponseDto;
@@ -61,6 +62,54 @@ public class UserAdminService {
                 page.getTotalPages(),
                 page.isLast()
         );
+    }
+
+    @Transactional
+    public UserAdminResponseDto createUser(AdminUserCreateRequestDto dto) {
+        if (userRepository.existsByUsername(dto.getUsername().trim())) {
+            throw new ApiException("Error: Username is already taken!", HttpStatus.BAD_REQUEST);
+        }
+
+        if (userRepository.existsByEmail(dto.getEmail().trim())) {
+            throw new ApiException("Error: Email is already in use!", HttpStatus.BAD_REQUEST);
+        }
+
+        Set<Role> roles = new HashSet<>();
+        if (dto.getRoles() != null && !dto.getRoles().isEmpty()) {
+            for (String roleName : dto.getRoles()) {
+                String formattedRole = roleName.toUpperCase();
+                if (!formattedRole.startsWith("ROLE_")) {
+                    formattedRole = "ROLE_" + formattedRole;
+                }
+                final String finalFormattedRole = formattedRole;
+                try {
+                    ERole eRole = ERole.valueOf(finalFormattedRole);
+                    Role role = roleRepository.findByName(eRole)
+                            .orElseThrow(() -> new ApiException("Role not found in database: " + finalFormattedRole, HttpStatus.BAD_REQUEST));
+                    roles.add(role);
+                } catch (IllegalArgumentException e) {
+                    throw new ApiException("Invalid role value: " + roleName, HttpStatus.BAD_REQUEST);
+                }
+            }
+        } else {
+            Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                    .orElseThrow(() -> new ApiException("Role ROLE_ADMIN not found", HttpStatus.INTERNAL_SERVER_ERROR));
+            roles.add(adminRole);
+        }
+
+        User user = User.builder()
+                .username(dto.getUsername().trim())
+                .email(dto.getEmail().trim())
+                .password(passwordEncoder.encode(dto.getPassword()))
+                .firstName(dto.getFirstName() != null ? dto.getFirstName().trim() : null)
+                .lastName(dto.getLastName() != null ? dto.getLastName().trim() : null)
+                .phoneNumber(dto.getPhoneNumber() != null ? dto.getPhoneNumber().trim() : null)
+                .enabled(dto.getEnabled() != null ? dto.getEnabled() : true)
+                .roles(roles)
+                .build();
+
+        User savedUser = userRepository.save(user);
+        return mapToDto(savedUser);
     }
 
     @Transactional

@@ -1,5 +1,6 @@
 package com.lifestyle.products.controller;
 
+import com.lifestyle.products.dto.AdminUserCreateRequestDto;
 import com.lifestyle.products.dto.AdminUserUpdateRequestDto;
 import com.lifestyle.products.dto.PagedResponseDto;
 import com.lifestyle.products.dto.UserAdminResponseDto;
@@ -8,6 +9,7 @@ import com.lifestyle.products.service.UserAdminService;
 import com.lifestyle.products.util.AppConstants;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +32,11 @@ public class UserAdminController {
             @RequestParam(value = "search", required = false) String search
     ) {
         return ResponseEntity.ok(userAdminService.getAllUsers(page, size, sortBy, sortDir, search));
+    }
+
+    @PostMapping
+    public ResponseEntity<UserAdminResponseDto> createUser(@Valid @RequestBody AdminUserCreateRequestDto dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(userAdminService.createUser(dto));
     }
 
     @PutMapping("/{userId}/enable")

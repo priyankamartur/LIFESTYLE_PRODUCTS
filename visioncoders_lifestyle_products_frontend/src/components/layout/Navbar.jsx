@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ShoppingCart, User, LogOut, LayoutDashboard, Search, Heart, ShoppingBag } from 'lucide-react';
+import { ShoppingCart, User, LogOut, LayoutDashboard, Search, Heart, ShoppingBag, ShieldAlert } from 'lucide-react';
 import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
 import useWishlist from '../../hooks/useWishlist';
@@ -43,7 +43,7 @@ export default function Navbar() {
             >
               Shop
             </Link>
-            {isAdmin && (
+            {isAdmin ? (
               <Link
                 to="/admin/dashboard"
                 className={`flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition duration-200 ${
@@ -51,7 +51,17 @@ export default function Navbar() {
                 }`}
               >
                 <LayoutDashboard size={13} />
-                Admin
+                Admin Dashboard
+              </Link>
+            ) : (
+              <Link
+                to="/admin/login"
+                className={`flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition duration-200 ${
+                  location.pathname.startsWith('/admin') ? 'border-b-2 border-amber-400 pb-1' : ''
+                }`}
+              >
+                <ShieldAlert size={13} />
+                Admin Portal
               </Link>
             )}
           </div>
@@ -119,6 +129,16 @@ export default function Navbar() {
                       <ShoppingBag size={14} className="text-slate-400" />
                       <span>My Orders</span>
                     </Link>
+                    {isAdmin && (
+                      <Link
+                        to="/admin/dashboard"
+                        onClick={() => setDropdownOpen(false)}
+                        className="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-amber-400 hover:bg-slate-800 transition"
+                      >
+                        <LayoutDashboard size={14} className="text-amber-400" />
+                        <span>Admin Dashboard</span>
+                      </Link>
+                    )}
                     <hr className="border-white/10 my-1" />
                     <button
                       onClick={() => {
@@ -140,6 +160,13 @@ export default function Navbar() {
                   className="px-4 py-1.5 text-xs font-bold text-slate-200 hover:text-amber-400 transition bg-white/5 border border-white/10 rounded-xl"
                 >
                   Login
+                </Link>
+                <Link
+                  to="/admin/login"
+                  className="px-3.5 py-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 transition bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-center gap-1.5"
+                >
+                  <ShieldAlert size={13} />
+                  Admin Portal
                 </Link>
               </div>
             )}

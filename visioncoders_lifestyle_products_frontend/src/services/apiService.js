@@ -238,6 +238,10 @@ const apiService = {
       return response.data;
     },
     // Users Management
+    createUser: async (userData) => {
+      const response = await axiosInstance.post('/admin/users', userData);
+      return response.data;
+    },
     getUserById: async (userId) => {
       const response = await axiosInstance.get(`/admin/users/${userId}`);
       return response.data;

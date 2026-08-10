@@ -26,7 +26,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link to="/catalog" className="hover:text-amber-400 transition">About Us</Link></li>
               <li><Link to="/catalog" className="hover:text-amber-400 transition">Careers</Link></li>
-              <li><Link to="/catalog" className="hover:text-amber-400 transition">Press & News</Link></li>
+              <li><Link to="/admin/login" className="text-amber-400 hover:text-amber-300 font-semibold transition">Admin Portal</Link></li>
             </ul>
           </div>
 
@@ -54,7 +54,11 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-xs space-y-4 md:space-y-0 text-slate-500">
           <span>&copy; {new Date().getFullYear()} Lifestyle Products Inc. All rights reserved.</span>
-          <span>Minimalist E-Commerce Platform.</span>
+          <div className="flex items-center gap-4">
+            <span>Minimalist E-Commerce Platform.</span>
+            <span>&bull;</span>
+            <Link to="/admin/login" className="text-amber-400 hover:underline font-semibold">Admin Access</Link>
+          </div>
         </div>
       </div>
     </footer>

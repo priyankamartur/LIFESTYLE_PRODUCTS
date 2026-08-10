@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Edit3, Search, ArrowLeft, ArrowRight, UserCheck, UserX } from 'lucide-react';
+import { Edit3, Search, ArrowLeft, ArrowRight, UserCheck, UserX, UserPlus } from 'lucide-react';
 import apiService from '../../services/apiService';
 
 export default function AdminUserList() {
@@ -60,9 +60,18 @@ export default function AdminUserList() {
   return (
     <div className="space-y-8 animate-fadeIn text-gray-100">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-extrabold text-white tracking-tight">Member Directory</h1>
-        <p className="text-gray-400 text-sm">Manage user authorizations, roles, and profiles</p>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <h1 className="text-3xl font-extrabold text-white tracking-tight">Member Directory</h1>
+          <p className="text-gray-400 text-sm">Manage user authorizations, roles, and profiles</p>
+        </div>
+        <Link
+          to="/admin/users/add"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold rounded-xl text-xs uppercase tracking-wider transition shadow-lg shadow-amber-500/20"
+        >
+          <UserPlus size={16} />
+          Add New Admin / User
+        </Link>
       </div>
 
       {/* Search Bar */}

@@ -39,30 +39,63 @@ public class DatabaseSeeder implements CommandLineRunner {
         Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
                 .orElseGet(() -> roleRepository.save(Role.builder().name(ERole.ROLE_ADMIN).build()));
 
-        // 1.1 Seed Initial Default Admin Account
-        if (!userRepository.existsByUsername("Admin@1") && !userRepository.existsByEmail("lavanya100yadav@gmail.com")) {
-            User defaultAdmin = User.builder()
-                    .firstName("Lavanya")
-                    .username("Admin@1")
-                    .email("lavanya100yadav@gmail.com")
-                    .password(passwordEncoder.encode("Lavanya@admin"))
-                    .roles(java.util.Collections.singleton(adminRole))
-                    .enabled(true)
-                    .build();
-            userRepository.save(defaultAdmin);
+        // 1.1 Seed / Ensure Initial Default Admin Accounts
+        User priyankaAdmin = userRepository.findByUsername("Admin@1")
+                .orElseGet(() -> userRepository.findByEmail("priyankamartur@gmail.com")
+                .orElseGet(() -> User.builder()
+                        .firstName("Priyanka")
+                        .username("Admin@1")
+                        .email("priyankamartur@gmail.com")
+                        .build()));
+        priyankaAdmin.setFirstName("Priyanka");
+        priyankaAdmin.setUsername("Admin@1");
+        priyankaAdmin.setEmail("priyankamartur@gmail.com");
+        priyankaAdmin.setPassword(passwordEncoder.encode("Priyanka@admin"));
+        priyankaAdmin.setEnabled(true);
+        if (priyankaAdmin.getRoles() == null) {
+            priyankaAdmin.setRoles(new java.util.HashSet<>());
         }
+        priyankaAdmin.getRoles().add(adminRole);
+        priyankaAdmin.getRoles().add(userRole);
+        userRepository.save(priyankaAdmin);
 
-        if (!userRepository.existsByUsername("admin") && !userRepository.existsByEmail("admin@lifestyle.com")) {
-            User standardAdmin = User.builder()
-                    .firstName("Admin")
-                    .username("admin")
-                    .email("admin@lifestyle.com")
-                    .password(passwordEncoder.encode("Admin@123"))
-                    .roles(java.util.Collections.singleton(adminRole))
-                    .enabled(true)
-                    .build();
-            userRepository.save(standardAdmin);
+        User standardAdmin = userRepository.findByUsername("admin")
+                .orElseGet(() -> userRepository.findByEmail("admin@lifestyle.com")
+                .orElseGet(() -> User.builder()
+                        .firstName("Admin")
+                        .username("admin")
+                        .email("admin@lifestyle.com")
+                        .build()));
+        standardAdmin.setFirstName("Admin");
+        standardAdmin.setUsername("admin");
+        standardAdmin.setEmail("admin@lifestyle.com");
+        standardAdmin.setPassword(passwordEncoder.encode("Admin@123"));
+        standardAdmin.setEnabled(true);
+        if (standardAdmin.getRoles() == null) {
+            standardAdmin.setRoles(new java.util.HashSet<>());
         }
+        standardAdmin.getRoles().add(adminRole);
+        standardAdmin.getRoles().add(userRole);
+        userRepository.save(standardAdmin);
+
+        User gmailAdmin = userRepository.findByUsername("admin_gmail")
+                .orElseGet(() -> userRepository.findByEmail("admin@gmail.com")
+                .orElseGet(() -> User.builder()
+                        .firstName("Admin")
+                        .username("admin_gmail")
+                        .email("admin@gmail.com")
+                        .build()));
+        gmailAdmin.setFirstName("Admin");
+        gmailAdmin.setUsername("admin_gmail");
+        gmailAdmin.setEmail("admin@gmail.com");
+        gmailAdmin.setPassword(passwordEncoder.encode("Admin@123"));
+        gmailAdmin.setEnabled(true);
+        if (gmailAdmin.getRoles() == null) {
+            gmailAdmin.setRoles(new java.util.HashSet<>());
+        }
+        gmailAdmin.getRoles().add(adminRole);
+        gmailAdmin.getRoles().add(userRole);
+        userRepository.save(gmailAdmin);
 
         // 1.2 Migrate existing users to CUSTOMER (ROLE_USER) by default if they have no role
         userRepository.findAll().forEach(user -> {

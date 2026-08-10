@@ -28,6 +28,7 @@ import AdminProductAdd from '../pages/admin/AdminProductAdd';
 import AdminProductEdit from '../pages/admin/AdminProductEdit';
 import AdminProductDelete from '../pages/admin/AdminProductDelete';
 import AdminUserList from '../pages/admin/AdminUserList';
+import AdminUserAdd from '../pages/admin/AdminUserAdd';
 import AdminUserEdit from '../pages/admin/AdminUserEdit';
 import AnalyticsAdmin from '../pages/admin/AnalyticsAdmin';
 
@@ -251,6 +252,16 @@ export default function AppRoutes() {
           <RouteGuard requireAuth requireAdmin>
             <AdminLayout>
               <AdminUserList />
+            </AdminLayout>
+          </RouteGuard>
+        } 
+      />
+      <Route 
+        path="/admin/users/add" 
+        element={
+          <RouteGuard requireAuth requireAdmin>
+            <AdminLayout>
+              <AdminUserAdd />
             </AdminLayout>
           </RouteGuard>
         } 

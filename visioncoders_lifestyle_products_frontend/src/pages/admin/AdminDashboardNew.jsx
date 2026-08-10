@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { Users, DollarSign, ShoppingCart, TrendingUp, ShieldCheck } from 'lucide-react';
+import { Users, DollarSign, ShoppingCart, TrendingUp, ShieldCheck, UserPlus } from 'lucide-react';
 import apiService from '../../services/apiService';
 import { formatCurrency } from '../../utils/formatCurrency';
 
@@ -37,10 +37,19 @@ export default function AdminDashboardNew() {
       {/* Title */}
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-extrabold text-white tracking-tight">Admin Dashboard</h1>
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-500 rounded-lg text-xs font-semibold uppercase tracking-wider">
-          <ShieldCheck size={14} />
-          System Manager Access
-        </span>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/admin/users/add"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-gray-950 rounded-xl text-xs font-bold uppercase tracking-wider transition shadow-md shadow-amber-500/20"
+          >
+            <UserPlus size={14} />
+            Add Admin / User
+          </Link>
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 bg-amber-500/10 border border-amber-500/20 text-amber-500 rounded-xl text-xs font-semibold uppercase tracking-wider">
+            <ShieldCheck size={14} />
+            System Manager Access
+          </span>
+        </div>
       </div>
 
       {stats && (
