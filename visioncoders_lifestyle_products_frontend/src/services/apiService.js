@@ -269,6 +269,15 @@ const apiService = {
       const response = await axiosInstance.get('/admin/analytics/overall');
       return response.data;
     },
+    // Order Management
+    getAllOrders: async () => {
+      const response = await axiosInstance.get('/orders/admin/all');
+      return response.data;
+    },
+    updateOrderStatus: async (orderId, status) => {
+      const response = await axiosInstance.put(`/orders/${orderId}/status`, { status });
+      return response.data;
+    },
   },
 
   // Wishlist
@@ -290,6 +299,19 @@ const apiService = {
       return response.data;
     },
   },
+
+  // Chatbot AI
+  chatbot: {
+    sendMessage: async (message, conversationId = '') => {
+      const response = await axiosInstance.post('/chat', { message, conversationId });
+      return response.data;
+    },
+    getSuggestions: async () => {
+      const response = await axiosInstance.get('/chat/suggestions');
+      return response.data;
+    },
+  },
 };
 
 export default apiService;
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, ShoppingBag, Users, BarChart3, LogOut, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, ShoppingBag, ShoppingCart, Users, BarChart3, LogOut, ShieldAlert } from 'lucide-react';
 import useAuth from '../../hooks/useAuth';
 
 export default function AdminLayout({ children }) {
@@ -15,6 +15,7 @@ export default function AdminLayout({ children }) {
 
   const navItems = [
     { label: 'Dashboard', path: '/admin/dashboard', icon: <LayoutDashboard size={18} /> },
+    { label: 'Orders', path: '/admin/orders', icon: <ShoppingCart size={18} /> },
     { label: 'Products', path: '/admin/products', icon: <ShoppingBag size={18} /> },
     { label: 'Users', path: '/admin/users', icon: <Users size={18} /> },
     { label: 'Analytics', path: '/admin/analytics', icon: <BarChart3 size={18} /> },

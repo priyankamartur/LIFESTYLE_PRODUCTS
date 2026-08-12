@@ -10,6 +10,10 @@ public class OrderResponseDto {
     private String status;
     private BigDecimal totalAmount;
     private String shippingAddress;
+    private String username;
+    private String customerName;
+    private String customerEmail;
+    private String customerPhone;
     private List<OrderItemResponseDto> items;
 
     // No-args constructor
@@ -17,13 +21,21 @@ public class OrderResponseDto {
     }
 
     // All-args constructor
-    public OrderResponseDto(Long id, LocalDateTime orderDate, String status, BigDecimal totalAmount, String shippingAddress, List<OrderItemResponseDto> items) {
+    public OrderResponseDto(Long id, LocalDateTime orderDate, String status, BigDecimal totalAmount, String shippingAddress, String username, String customerName, String customerEmail, String customerPhone, List<OrderItemResponseDto> items) {
         this.id = id;
         this.orderDate = orderDate;
         this.status = status;
         this.totalAmount = totalAmount;
         this.shippingAddress = shippingAddress;
+        this.username = username;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerPhone = customerPhone;
         this.items = items;
+    }
+
+    public OrderResponseDto(Long id, LocalDateTime orderDate, String status, BigDecimal totalAmount, String shippingAddress, List<OrderItemResponseDto> items) {
+        this(id, orderDate, status, totalAmount, shippingAddress, null, null, null, null, items);
     }
 
     // Getters and Setters
@@ -67,6 +79,38 @@ public class OrderResponseDto {
         this.shippingAddress = shippingAddress;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
+    public String getCustomerPhone() {
+        return customerPhone;
+    }
+
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
     public List<OrderItemResponseDto> getItems() {
         return items;
     }
@@ -87,6 +131,10 @@ public class OrderResponseDto {
         private String status;
         private BigDecimal totalAmount;
         private String shippingAddress;
+        private String username;
+        private String customerName;
+        private String customerEmail;
+        private String customerPhone;
         private List<OrderItemResponseDto> items;
 
         public OrderResponseDtoBuilder id(Long id) {
@@ -114,13 +162,33 @@ public class OrderResponseDto {
             return this;
         }
 
+        public OrderResponseDtoBuilder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public OrderResponseDtoBuilder customerName(String customerName) {
+            this.customerName = customerName;
+            return this;
+        }
+
+        public OrderResponseDtoBuilder customerEmail(String customerEmail) {
+            this.customerEmail = customerEmail;
+            return this;
+        }
+
+        public OrderResponseDtoBuilder customerPhone(String customerPhone) {
+            this.customerPhone = customerPhone;
+            return this;
+        }
+
         public OrderResponseDtoBuilder items(List<OrderItemResponseDto> items) {
             this.items = items;
             return this;
         }
 
         public OrderResponseDto build() {
-            return new OrderResponseDto(id, orderDate, status, totalAmount, shippingAddress, items);
+            return new OrderResponseDto(id, orderDate, status, totalAmount, shippingAddress, username, customerName, customerEmail, customerPhone, items);
         }
     }
 }

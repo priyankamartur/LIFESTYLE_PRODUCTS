@@ -31,6 +31,7 @@ import AdminUserList from '../pages/admin/AdminUserList';
 import AdminUserAdd from '../pages/admin/AdminUserAdd';
 import AdminUserEdit from '../pages/admin/AdminUserEdit';
 import AnalyticsAdmin from '../pages/admin/AnalyticsAdmin';
+import AdminOrders from '../pages/admin/AdminOrders';
 
 export default function AppRoutes() {
   const { isAuthenticated, loading } = useAuth();
@@ -174,6 +175,16 @@ export default function AppRoutes() {
           <RouteGuard requireAuth requireAdmin>
             <AdminLayout>
               <AdminDashboardNew />
+            </AdminLayout>
+          </RouteGuard>
+        } 
+      />
+      <Route 
+        path="/admin/orders" 
+        element={
+          <RouteGuard requireAuth requireAdmin>
+            <AdminLayout>
+              <AdminOrders />
             </AdminLayout>
           </RouteGuard>
         } 

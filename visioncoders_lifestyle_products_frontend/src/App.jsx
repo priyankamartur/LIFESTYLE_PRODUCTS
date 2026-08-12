@@ -12,6 +12,7 @@ import { WishlistProvider } from './context/WishlistContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Breadcrumbs from './components/common/Breadcrumbs';
+import ChatbotWidget from './components/common/Chatbot/ChatbotWidget';
 
 // Routes
 import AppRoutes from './routes/AppRoutes';
@@ -29,7 +30,7 @@ function AppContent() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen text-slate-100 w-full">
+    <div className="flex flex-col min-h-screen text-slate-100 w-full relative">
       <Navbar />
       
       <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -38,6 +39,7 @@ function AppContent() {
       </main>
 
       <Footer />
+      <ChatbotWidget />
     </div>
   );
 }

@@ -12,6 +12,7 @@ import com.lifestyle.products.repository.CartRepository;
 import com.lifestyle.products.repository.OrderRepository;
 import com.lifestyle.products.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -117,6 +118,14 @@ public class OrderService {
         return mapToDto(updatedOrder);
     }
 
+    @Transactional(readOnly = true)
+    public List<OrderResponseDto> getAllOrdersForAdmin() {
+        List<Order> orders = orderRepository.findAll(Sort.by(Sort.Direction.DESC, "orderDate"));
+        return orders.stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
+    }
+
     private OrderResponseDto mapToDto(Order order) {
         List<OrderItemResponseDto> items = order.getOrderItems().stream()
                 .map(item -> OrderItemResponseDto.builder()
@@ -132,12 +141,22 @@ public class OrderService {
                         .build())
                 .collect(Collectors.toList());
 
+        User u = order.getUser();
+        String fullName = u != null ? ((u.getFirstName() != null ? u.getFirstName() : "") + " " + (u.getLastName() != null ? u.getLastName() : "")).trim() : null;
+        if (fullName == null || fullName.isEmpty()) {
+            fullName = u != null ? u.getUsername() : "Guest Customer";
+        }
+
         return OrderResponseDto.builder()
                 .id(order.getId())
                 .orderDate(order.getOrderDate())
                 .status(order.getStatus().name())
                 .totalAmount(order.getTotalAmount())
                 .shippingAddress(order.getShippingAddress())
+                .username(u != null ? u.getUsername() : null)
+                .customerName(fullName)
+                .customerEmail(u != null ? u.getEmail() : null)
+                .customerPhone(u != null ? u.getPhoneNumber() : null)
                 .items(items)
                 .build();
     }
@@ -153,12 +172,21 @@ public class OrderService {
             if (order.getUser().getRoles() != null && !order.getUser().getRoles().isEmpty()) {
                 roleName = order.getUser().getRoles().iterator().next().getName().name();
             }
+
+            User u = order.getUser();
+            String fullName = u != null ? ((u.getFirstName() != null ? u.getFirstName() : "") + " " + (u.getLastName() != null ? u.getLastName() : "")).trim() : null;
+            if (fullName == null || fullName.isEmpty()) {
+                fullName = u != null ? u.getUsername() : "Guest Customer";
+            }
             
             for (OrderItem item : order.getOrderItems()) {
                 BigDecimal totalPrice = item.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()));
                 
                 OrderHistoryItemDto dto = OrderHistoryItemDto.builder()
-                        .username(order.getUser().getUsername())
+                        .username(u != null ? u.getUsername() : null)
+                        .customerName(fullName)
+                        .customerEmail(u != null ? u.getEmail() : null)
+                        .customerPhone(u != null ? u.getPhoneNumber() : null)
                         .role(roleName)
                         .orderId(order.getId())
                         .productId(item.getProduct().getId())
@@ -180,4 +208,5 @@ public class OrderService {
         return itemsList;
     }
 }
+
 

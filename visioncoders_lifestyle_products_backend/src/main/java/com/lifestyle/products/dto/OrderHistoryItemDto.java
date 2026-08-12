@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 
 public class OrderHistoryItemDto {
     private String username;
+    private String customerName;
+    private String customerEmail;
+    private String customerPhone;
     private String role;
     private Long orderId;
     private Long productId;
@@ -22,11 +25,14 @@ public class OrderHistoryItemDto {
     public OrderHistoryItemDto() {
     }
 
-    public OrderHistoryItemDto(String username, String role, Long orderId, Long productId, String productName, 
+    public OrderHistoryItemDto(String username, String customerName, String customerEmail, String customerPhone, String role, Long orderId, Long productId, String productName, 
                                String productDescription, String productImageUrl, String category, 
                                Integer quantity, BigDecimal price, BigDecimal totalPrice, 
                                String orderStatus, LocalDateTime orderDate) {
         this.username = username;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerPhone = customerPhone;
         this.role = role;
         this.orderId = orderId;
         this.productId = productId;
@@ -41,9 +47,25 @@ public class OrderHistoryItemDto {
         this.orderDate = orderDate;
     }
 
+    public OrderHistoryItemDto(String username, String role, Long orderId, Long productId, String productName, 
+                               String productDescription, String productImageUrl, String category, 
+                               Integer quantity, BigDecimal price, BigDecimal totalPrice, 
+                               String orderStatus, LocalDateTime orderDate) {
+        this(username, null, null, null, role, orderId, productId, productName, productDescription, productImageUrl, category, quantity, price, totalPrice, orderStatus, orderDate);
+    }
+
     // Getters and Setters
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
+
+    public String getCustomerName() { return customerName; }
+    public void setCustomerName(String customerName) { this.customerName = customerName; }
+
+    public String getCustomerEmail() { return customerEmail; }
+    public void setCustomerEmail(String customerEmail) { this.customerEmail = customerEmail; }
+
+    public String getCustomerPhone() { return customerPhone; }
+    public void setCustomerPhone(String customerPhone) { this.customerPhone = customerPhone; }
 
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
@@ -81,14 +103,15 @@ public class OrderHistoryItemDto {
     public LocalDateTime getOrderDate() { return orderDate; }
     public void setOrderDate(LocalDateTime orderDate) { this.orderDate = orderDate; }
 
-    // Builder method
     public static OrderHistoryItemDtoBuilder builder() {
         return new OrderHistoryItemDtoBuilder();
     }
 
-    // Builder class
     public static class OrderHistoryItemDtoBuilder {
         private String username;
+        private String customerName;
+        private String customerEmail;
+        private String customerPhone;
         private String role;
         private Long orderId;
         private Long productId;
@@ -104,6 +127,21 @@ public class OrderHistoryItemDto {
 
         public OrderHistoryItemDtoBuilder username(String username) {
             this.username = username;
+            return this;
+        }
+
+        public OrderHistoryItemDtoBuilder customerName(String customerName) {
+            this.customerName = customerName;
+            return this;
+        }
+
+        public OrderHistoryItemDtoBuilder customerEmail(String customerEmail) {
+            this.customerEmail = customerEmail;
+            return this;
+        }
+
+        public OrderHistoryItemDtoBuilder customerPhone(String customerPhone) {
+            this.customerPhone = customerPhone;
             return this;
         }
 
@@ -168,7 +206,7 @@ public class OrderHistoryItemDto {
         }
 
         public OrderHistoryItemDto build() {
-            return new OrderHistoryItemDto(username, role, orderId, productId, productName, productDescription,
+            return new OrderHistoryItemDto(username, customerName, customerEmail, customerPhone, role, orderId, productId, productName, productDescription,
                     productImageUrl, category, quantity, price, totalPrice, orderStatus, orderDate);
         }
     }

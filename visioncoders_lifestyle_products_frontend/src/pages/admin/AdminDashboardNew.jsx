@@ -95,8 +95,8 @@ export default function AdminDashboardNew() {
             <div className="bg-gray-900 border border-gray-800 rounded-3xl p-6 shadow-lg space-y-4">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-bold text-white tracking-tight">Recent Transactions</h3>
-                <Link to="/admin/analytics/overall" className="text-xs font-bold uppercase tracking-widest text-amber-500 hover:underline flex items-center gap-0.5">
-                  View Analytics <TrendingUp size={13} />
+                <Link to="/admin/orders" className="text-xs font-bold uppercase tracking-widest text-amber-500 hover:underline flex items-center gap-0.5">
+                  Manage All Orders <ShoppingCart size={13} />
                 </Link>
               </div>
 
@@ -105,7 +105,8 @@ export default function AdminDashboardNew() {
                   <thead className="text-xs font-bold text-gray-500 uppercase border-b border-gray-800">
                     <tr>
                       <th className="pb-3">Order ID</th>
-                      <th className="pb-3">Date</th>
+                      <th className="pb-3">Customer</th>
+                      <th className="pb-3">Email</th>
                       <th className="pb-3">Amount</th>
                       <th className="pb-3 text-right">Status</th>
                     </tr>
@@ -115,12 +116,11 @@ export default function AdminDashboardNew() {
                       stats.recentOrders.map((order) => (
                         <tr key={order.id} className="hover:bg-gray-850 transition">
                           <td className="py-3.5 font-semibold text-white">#{order.id}</td>
-                          <td className="py-3.5 text-xs">
-                            {new Date(order.orderDate).toLocaleDateString('en-US', {
-                              month: 'short',
-                              day: 'numeric',
-                              year: 'numeric'
-                            })}
+                          <td className="py-3.5 text-xs font-medium text-amber-300">
+                            {order.customerName || order.username || 'Customer'}
+                          </td>
+                          <td className="py-3.5 text-xs text-gray-400">
+                            {order.customerEmail || 'N/A'}
                           </td>
                           <td className="py-3.5 font-bold text-white">{formatCurrency(order.totalAmount || 0)}</td>
                           <td className="py-3.5 text-right">
@@ -138,7 +138,7 @@ export default function AdminDashboardNew() {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="4" className="py-8 text-center text-gray-500">
+                        <td colSpan="5" className="py-8 text-center text-gray-500">
                           No recent transactions found.
                         </td>
                       </tr>
